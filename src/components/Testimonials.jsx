@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Reveal from './Reveal.jsx'
 import { SECTION_HEADING } from '../constants/typography.js'
 
@@ -57,18 +57,75 @@ const testimonialsData = [
   }
 ]
 
-const duplicateTestimonials = [...testimonialsData, ...testimonialsData]
-
 const Testimonials = () => {
-  const [pausedRow, setPausedRow] = useState(null)
-  const marqueeRows = useMemo(() => {
-    const rowCount = 2
-    return Array.from({ length: rowCount }, (_, rowIndex) =>
-      duplicateTestimonials.filter((_, idx) => idx % rowCount === rowIndex)
-    )
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const scrollContainerRef = useRef(null)
+  const intervalRef = useRef(null)
+
+  // Auto-scroll to next testimonial every 5 seconds
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % testimonialsData.length)
+    }, 5000)
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
   }, [])
 
-  const animationDurations = [38, 44]
+  // Scroll to the current testimonial
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const scrollPosition = currentIndex * scrollContainerRef.current.offsetWidth
+      scrollContainerRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      })
+    }
+  }, [currentIndex])
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollPosition = scrollContainerRef.current.scrollLeft
+      const cardWidth = scrollContainerRef.current.offsetWidth
+      const newIndex = Math.round(scrollPosition / cardWidth)
+      
+      // Only update if index actually changed
+      if (newIndex !== currentIndex && newIndex < testimonialsData.length) {
+        setCurrentIndex(newIndex)
+        
+        // Reset auto-scroll timer
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current)
+          intervalRef.current = setInterval(() => {
+            setCurrentIndex(prev => (prev + 1) % testimonialsData.length)
+          }, 5000)
+        }
+      }
+    }
+  }
+
+  const goToTestimonial = (index) => {
+    setCurrentIndex(index)
+    
+    // Reset auto-scroll timer
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prev => (prev + 1) % testimonialsData.length)
+      }, 5000)
+    }
+  }
+
+  const goToPrev = () => {
+    goToTestimonial((currentIndex - 1 + testimonialsData.length) % testimonialsData.length)
+  }
+
+  const goToNext = () => {
+    goToTestimonial((currentIndex + 1) % testimonialsData.length)
+  }
 
   return (
     <section className="py-10 md:py-12 relative overflow-hidden">
@@ -89,65 +146,104 @@ const Testimonials = () => {
             </span>
           </h2>
           <p className="text-sm md:text-base text-white/65 max-w-2xl mx-auto">
-            Dual-row marquee keeps testimonials within view longer—hover to pause and read without scrolling.
+            See what our clients say about working with us.
           </p>
         </Reveal>
 
-        <div className="space-y-5">
-          {marqueeRows.map((row, rowIndex) => (
-            <div
-              key={rowIndex}
-              className="group/marquee relative overflow-hidden rounded-3xl border border-white/10 bg-black/30 backdrop-blur-2xl"
-              onMouseEnter={() => setPausedRow(rowIndex)}
-              onMouseLeave={() => setPausedRow(null)}
-            >
-              <div
-                className="flex gap-4 py-3 px-4"
-                style={{
-                  animation: `testimonial-marquee ${animationDurations[rowIndex % animationDurations.length]}s linear infinite`,
-                  animationDirection: rowIndex % 2 === 0 ? 'normal' : 'reverse',
-                  animationPlayState: pausedRow === rowIndex ? 'paused' : 'running'
-                }}
-              >
-                {[...row, ...row].map((testimonial, index) => (
-                  <article
-                    key={`${testimonial.name}-${index}`}
-                    className="flex min-w-[320px] max-w-[320px] flex-col rounded-xl border border-white/10 bg-white/[0.04] p-3 text-left shadow-[0_0_20px_rgba(15,23,42,0.2)] transition duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.08]"
-                  >
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-[10px] font-bold">
-                        {testimonial.name
-                          .split(' ')
-                          .map((n) => n[0])
-                          .join('')}
+        {/* Single row horizontal scrolling testimonials */}
+        <div className="relative">
+          {/* Scrollable container */}
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="overflow-x-hidden snap-x snap-mandatory w-full"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
+            <div className="flex" style={{ width: `${testimonialsData.length * 100}%` }}>
+              {testimonialsData.map((testimonial, index) => (
+                <div 
+                  key={testimonial.name}
+                  className="w-full flex-shrink-0 snap-center px-1"
+                  style={{ scrollSnapAlign: 'center' }}
+                >
+                  <Reveal as="div" delay={index * 100}>
+                    <article className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 md:p-6 text-left shadow-[0_0_30px_rgba(15,23,42,0.3)] transition duration-500 hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.08] mx-2 md:mx-4">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-lg font-bold">
+                          {testimonial.name
+                            .split(' ')
+                            .map((n) => n[0])
+                            .join('')}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-base font-semibold text-white leading-tight">{testimonial.name}</p>
+                          <p className="text-sm uppercase tracking-[0.15em] text-white/50">
+                            {testimonial.role.split('&')[0]} • {testimonial.industry}
+                          </p>
+                        </div>
+                        <span className="text-2xl">{testimonial.logo}</span>
                       </div>
-                      <div>
-                        <p className="text-xs font-semibold text-white leading-tight">{testimonial.name}</p>
-                        <p className="text-[9px] uppercase tracking-[0.15em] text-white/50">
-                          {testimonial.role.split('&')[0]} • {testimonial.industry}
-                        </p>
+                      <p className="text-base text-white/80 mb-5 leading-relaxed">
+                        “{testimonial.quote}”
+                      </p>
+                      <div className="mt-auto text-sm text-white/70 flex justify-between border-t border-white/10 pt-4">
+                        <span className="font-semibold text-white">{testimonial.result}</span>
+                        <span>{testimonial.duration}</span>
                       </div>
-                      <span className="text-base">{testimonial.logo}</span>
-                    </div>
-                    <p className="text-[10px] text-white/70 mb-2 leading-relaxed line-clamp-3">
-                      “{testimonial.quote}”
-                    </p>
-                    <div className="mt-auto text-[9px] text-white/60 flex justify-between border-t border-white/10 pt-2">
-                      <span className="font-semibold text-white text-[10px]">{testimonial.result}</span>
-                      <span>{testimonial.duration}</span>
-                    </div>
-                  </article>
-                ))}
-              </div>
+                    </article>
+                  </Reveal>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {testimonialsData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentIndex === index 
+                    ? 'bg-blue-400 w-8' 
+                    : 'bg-white/30'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Navigation arrows */}
+          <button
+            onClick={goToPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 rounded-full bg-black/50 border border-white/20 text-white/70 items-center justify-center hover:bg-black/70 hover:text-white transition-all duration-300 flex md:flex"
+            aria-label="Previous testimonial"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            onClick={goToNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 rounded-full bg-black/50 border border-white/20 text-white/70 items-center justify-center hover:bg-black/70 hover:text-white transition-all duration-300 flex md:flex"
+            aria-label="Next testimonial"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       </div>
 
       <style>{`
-        @keyframes testimonial-marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+        /* Hide scrollbar but keep functionality */
+        .overflow-x-hidden::-webkit-scrollbar {
+          display: none;
+        }
+        .overflow-x-hidden {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </section>

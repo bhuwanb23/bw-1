@@ -98,61 +98,65 @@ const WhyChooseUs = () => {
           </p>
         </Reveal>
 
-        {/* Fixed Width Smaller Gradient Cards */}
-        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide justify-center">
-          {reasons.map((reason, index) => (
-            <Reveal
-              key={reason.id}
-              as="div"
-              delay={index * 150}
-              className="flex-shrink-0"
-            >
-              <div 
-                className="group relative w-64 h-48 rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl p-4 transition-all duration-500 hover:border-white/20"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Gradient Background Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${reason.color} opacity-0 transition-opacity duration-500 group-hover:opacity-20 rounded-xl`}></div>
-                
-                {/* Decorative Circles */}
-                <div className={`absolute top-3 right-3 w-12 h-12 rounded-full bg-gradient-to-br ${reason.color} opacity-10 blur-xl`}></div>
-                <div className={`absolute bottom-4 left-4 w-8 h-8 rounded-full bg-gradient-to-br ${reason.color} opacity-15 blur-xl`}></div>
-                
-                <div className="relative h-full flex flex-col">
-                  {/* Number Badge */}
-                  <div className="flex justify-between items-start mb-3">
-                    <div className={`inline-flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br ${reason.color} text-white font-bold text-xs`}>
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${reason.color} ${hoveredIndex === index ? 'animate-pulse' : ''}`}></div>
-                  </div>
-                  
-                  <div className="mt-auto">
-                    <h3 className="text-base font-bold text-white mb-1">{reason.title}</h3>
-                    <p className="text-white/70 text-xs">{reason.description}</p>
+        {/* Fixed Width Smaller Gradient Cards with proper horizontal scrolling */}
+        <div className="relative">
+          <div className="overflow-x-auto pb-6 scrollbar-hide px-6 md:px-8">
+            <div className="flex gap-5" style={{ minWidth: 'max-content', paddingLeft: '0.5rem', paddingRight: '0.5rem' }}>
+              {reasons.map((reason, index) => (
+                <Reveal
+                  key={reason.id}
+                  as="div"
+                  delay={index * 150}
+                  className="flex-shrink-0"
+                >
+                  <div 
+                    className="group relative w-64 h-48 rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl p-4 transition-all duration-500 hover:border-white/20"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    {/* Gradient Background Overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${reason.color} opacity-0 transition-opacity duration-500 group-hover:opacity-20 rounded-xl`}></div>
                     
-                    {/* Progress Bar */}
-                    <div className="mt-3">
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-[10px] text-white/60">Impact</span>
-                        <span className={`text-xs font-bold bg-gradient-to-r ${reason.color} bg-clip-text text-transparent`}>{reason.impact}%</span>
+                    {/* Decorative Circles */}
+                    <div className={`absolute top-3 right-3 w-12 h-12 rounded-full bg-gradient-to-br ${reason.color} opacity-10 blur-xl`}></div>
+                    <div className={`absolute bottom-4 left-4 w-8 h-8 rounded-full bg-gradient-to-br ${reason.color} opacity-15 blur-xl`}></div>
+                    
+                    <div className="relative h-full flex flex-col">
+                      {/* Number Badge */}
+                      <div className="flex justify-between items-start mb-3">
+                        <div className={`inline-flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br ${reason.color} text-white font-bold text-xs`}>
+                          {String(index + 1).padStart(2, '0')}
+                        </div>
+                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${reason.color} ${hoveredIndex === index ? 'animate-pulse' : ''}`}></div>
                       </div>
-                      <div className="w-full bg-white/10 rounded-full h-1.5">
-                        <div 
-                          className={`bg-gradient-to-r ${reason.color} h-1.5 rounded-full transition-all duration-1000 ease-out`}
-                          style={{ 
-                            width: `${reason.impact}%`,
-                            transitionDelay: `${index * 200}ms`
-                          }}
-                        />
+                      
+                      <div className="mt-auto">
+                        <h3 className="text-base font-bold text-white mb-1">{reason.title}</h3>
+                        <p className="text-white/70 text-xs">{reason.description}</p>
+                        
+                        {/* Progress Bar */}
+                        <div className="mt-3">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-[10px] text-white/60">Impact</span>
+                            <span className={`text-xs font-bold bg-gradient-to-r ${reason.color} bg-clip-text text-transparent`}>{reason.impact}%</span>
+                          </div>
+                          <div className="w-full bg-white/10 rounded-full h-1.5">
+                            <div 
+                              className={`bg-gradient-to-r ${reason.color} h-1.5 rounded-full transition-all duration-1000 ease-out`}
+                              style={{ 
+                                width: `${reason.impact}%`,
+                                transitionDelay: `${index * 200}ms`
+                              }}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Smaller Stats Section */}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Reveal from './Reveal.jsx'
 import { SECTION_HEADING } from '../constants/typography.js'
 
@@ -55,9 +55,36 @@ const features = [
 
 const FeaturesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [visibleFeatures, setVisibleFeatures] = useState([])
+  const sectionRef = useRef(null)
+
+  // Intersection Observer to trigger animations when section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // When section is in view, make all features visible
+            setVisibleFeatures(Array.from({ length: features.length }, (_, i) => i))
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
       
       {/* Animated background particles */}
@@ -68,24 +95,24 @@ const FeaturesSection = () => {
         <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-emerald-400/40 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
       </div>
       
-      <div className="relative">
-        <Reveal className="text-center mb-16" amount={0.2}>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <Reveal className="text-center mb-12 md:mb-16" amount={0.2}>
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
             <span>Our Core Expertise</span>
           </div>
-          <h2 className={`${SECTION_HEADING} mb-6`}>
+          <h2 className={`${SECTION_HEADING} mb-4 md:mb-6`}>
             We transform complex challenges into{' '}
             <span className="bg-gradient-to-r from-sky-400 via-purple-400 to-sky-500 bg-clip-text text-transparent animate-pulse">
               elegant solutions.
             </span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto font-light">
+          <p className="text-base md:text-lg text-white/60 max-w-2xl mx-auto font-light">
             From concept to deployment, we deliver high-performance digital solutions that drive real business results.
           </p>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-16">
+        <div className="grid gap-6 sm:gap-8 md:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 md:mt-16">
           {features.map((feature, index) => (
             <Reveal
               key={feature.title}
@@ -94,15 +121,15 @@ const FeaturesSection = () => {
               className="group relative"
             >
               <div 
-                className={`relative overflow-hidden rounded-2xl border border-white/8 bg-black/40 p-8 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-black/70 hover:scale-105 hover:-translate-y-2 ${hoveredIndex === index ? feature.glowColor : ''}`}
+                className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-7 md:p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/30 hover:bg-black/70 hover:scale-105 hover:-translate-y-1 ${hoveredIndex === index ? feature.glowColor : ''}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Animated gradient background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 transition-all duration-700 group-hover:opacity-100`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 transition-all duration-500 group-hover:opacity-100`} />
                 
                 {/* Floating particles on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                   <div className="absolute top-4 right-4 text-lg animate-bounce" style={{ animationDelay: '0s' }}>
                     {feature.particles[0]}
                   </div>
@@ -115,16 +142,16 @@ const FeaturesSection = () => {
                 </div>
                 
                 {/* Glowing orb effect */}
-                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-150 blur-xl" />
+                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-150 blur-xl" />
                 
                 <div className="relative z-10">
-                  <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/5 text-white/70 transition-all duration-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/20">
-                    <div className="transition-transform duration-500 group-hover:scale-125">
+                  <div className="mb-5 md:mb-6 inline-flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/5 text-white/70 transition-all duration-300 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/20">
+                    <div className="transition-transform duration-300 group-hover:scale-125">
                       {feature.icon}
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-white mb-4 tracking-tight transition-all duration-300 group-hover:text-white group-hover:scale-105">
+                  <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4 tracking-tight transition-all duration-300 group-hover:text-white group-hover:scale-105">
                     {feature.title}
                   </h3>
                   
@@ -133,8 +160,8 @@ const FeaturesSection = () => {
                   </p>
                   
                   {/* Progress bar animation on hover */}
-                  <div className="mt-6 h-1 bg-white/10 rounded-full overflow-hidden">
-                    <div className={`h-full bg-gradient-to-r ${feature.gradient.replace('/30', '').replace('/20', '')} transform transition-transform duration-1000 ${hoveredIndex === index ? 'translate-x-0' : '-translate-x-full'}`} />
+                  <div className="mt-5 md:mt-6 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className={`h-full bg-gradient-to-r ${feature.gradient.replace('/30', '').replace('/20', '')} transform transition-transform duration-700 ${hoveredIndex === index ? 'translate-x-0' : '-translate-x-full'}`} />
                   </div>
                 </div>
               </div>
