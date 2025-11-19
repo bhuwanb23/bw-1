@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 import { SECTION_HEADING } from '../constants/typography.js'
 
@@ -15,7 +15,9 @@ const codeSnippets = [
   
   return { magic, innovation: true }
 }`,
-    description: 'Custom hooks for seamless development'
+    description: 'Custom hooks for seamless development',
+    color: 'from-yellow-500 to-amber-500',
+    icon: '⚛️'
   },
   {
     title: 'Python AI',
@@ -26,7 +28,9 @@ const codeSnippets = [
     
     prediction = model.predict(data)
     return prediction.with_confidence()`,
-    description: 'AI-powered prediction algorithms'
+    description: 'AI-powered prediction algorithms',
+    color: 'from-blue-500 to-cyan-500',
+    icon: '🤖'
   },
   {
     title: 'Go Microservice',
@@ -40,54 +44,48 @@ const codeSnippets = [
     
     return service.Launch()
 }`,
-    description: 'Scalable microservice architecture'
+    description: 'Scalable microservice architecture',
+    color: 'from-cyan-500 to-teal-500',
+    icon: '⚙️'
+  },
+  {
+    title: 'Node.js API',
+    language: 'JavaScript',
+    code: `app.post('/api/magic', (req, res) => {
+  const result = performMagic(req.body)
+  res.json({ success: true, data: result })
+})`,
+    description: 'RESTful API endpoints',
+    color: 'from-green-500 to-emerald-500',
+    icon: '🔌'
+  },
+  {
+    title: 'CSS Framework',
+    language: 'CSS',
+    code: `.nulfinity-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}`,
+    description: 'Modern CSS utilities',
+    color: 'from-purple-500 to-pink-500',
+    icon: '🎨'
   }
 ]
 
-const contributions = [
-  { project: 'React Ecosystem', commits: '2.4K+', impact: 'High' },
-  { project: 'AI/ML Libraries', commits: '1.8K+', impact: 'Critical' },
-  { project: 'DevOps Tools', commits: '3.2K+', impact: 'Essential' },
-  { project: 'Cloud Platforms', commits: '1.5K+', impact: 'Vital' }
-]
-
 const OpenSourceHighlight = () => {
-  const [activeSnippet, setActiveSnippet] = useState(0)
-  const [typingText, setTypingText] = useState('')
-  const [isTyping, setIsTyping] = useState(true)
-
-  useEffect(() => {
-    const text = "Building the future, one commit at a time..."
-    let index = 0
-
-    const typeInterval = setInterval(() => {
-      if (index < text.length) {
-        setTypingText(text.slice(0, index + 1))
-        index++
-      } else {
-        setIsTyping(false)
-        clearInterval(typeInterval)
-      }
-    }, 100)
-
-    return () => clearInterval(typeInterval)
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSnippet((prev) => (prev + 1) % codeSnippets.length)
-    }, 4000)
-
-    return () => clearInterval(interval)
-  }, [])
+  const [animatedSnippets] = useState([...codeSnippets, ...codeSnippets])
 
   return (
-    <section className="py-6 md:py-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/3 to-transparent" />
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/5 to-transparent" />
+
+      {/* Floating geometric shapes */}
+      <div className="absolute top-10 left-10 w-40 h-40 border border-green-500/20 rounded-full animate-spin" style={{ animationDuration: '25s' }}></div>
+      <div className="absolute bottom-20 right-20 w-32 h-32 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rotate-45 animate-pulse"></div>
 
       <div className="relative">
-
-        <Reveal className="text-center mb-20" amount={0.2}>
+        <Reveal className="text-center mb-16" amount={0.2}>
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
             <span>Open Source</span>
@@ -103,106 +101,81 @@ const OpenSourceHighlight = () => {
           </p>
         </Reveal>
 
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Infinite Scrolling Code Cards */}
+          <div className="mb-16">
+            <div className="relative h-48 overflow-hidden rounded-2xl">
+              {/* Gradient overlays for fade effect */}
+              <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-black z-10"></div>
+              <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-black z-10"></div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid gap-4 lg:grid-cols-2">
-            {/* Compact Code Terminal */}
-            <Reveal delay={200}>
-              <div className="rounded-lg border border-white/10 bg-black/60 backdrop-blur-xl overflow-hidden">
-                {/* Terminal Header */}
-                <div className="flex items-center justify-between px-3 py-2 border-b border-white/10 bg-black/40">
-                  <div className="flex items-center gap-2">
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 rounded-full bg-red-500/80"></div>
-                      <div className="w-2 h-2 rounded-full bg-yellow-500/80"></div>
-                      <div className="w-2 h-2 rounded-full bg-green-500/80"></div>
-                    </div>
-                    <span className="text-white/60 text-xs font-mono">terminal</span>
-                  </div>
-                  <div className="flex gap-1">
-                    {codeSnippets.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setActiveSnippet(index)}
-                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === activeSnippet ? 'bg-green-400' : 'bg-white/20 hover:bg-white/40'
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Code Content */}
-                <div className="p-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-green-400 font-mono text-xs">$</span>
-                    <span className="text-white/80 font-mono text-xs">
-                      cat {codeSnippets[activeSnippet].title.toLowerCase().replace(' ', '_')}.{codeSnippets[activeSnippet].language.toLowerCase() === 'javascript' ? 'js' : codeSnippets[activeSnippet].language.toLowerCase() === 'python' ? 'py' : 'go'}
-                    </span>
-                  </div>
-
-                  <div className="relative">
-                    <pre className="text-xs font-mono text-white/90 leading-relaxed overflow-x-auto">
-                      <code>{codeSnippets[activeSnippet].code.substring(0, 200)}...</code>
-                    </pre>
-
-                    <div className="absolute top-1 right-1">
-                      <span className={`inline-flex items-center rounded px-2 py-0.5 text-xs font-medium ${codeSnippets[activeSnippet].language === 'JavaScript'
-                        ? 'bg-yellow-500/20 text-yellow-300'
-                        : codeSnippets[activeSnippet].language === 'Python'
-                          ? 'bg-blue-500/20 text-blue-300'
-                          : 'bg-cyan-500/20 text-cyan-300'
-                        }`}>
-                        {codeSnippets[activeSnippet].language}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="mt-2 text-white/60 text-xs">
-                    {codeSnippets[activeSnippet].description}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Compact Contributions */}
-            <Reveal delay={300}>
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2">
-                  <span className="text-lg">🚀</span>
-                  Key Contributions
-                </h3>
-
-                {contributions.map((contribution, index) => (
+              {/* Scrolling container */}
+              <div className="flex animate-scroll-left whitespace-nowrap h-full">
+                {animatedSnippets.map((snippet, index) => (
                   <div
-                    key={contribution.project}
-                    className="relative overflow-hidden rounded-lg border border-white/8 bg-black/40 p-3 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-black/60"
+                    key={index}
+                    className="inline-flex flex-shrink-0 w-80 h-full mx-3 rounded-xl border border-white/10 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl p-5"
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-sm font-semibold text-white truncate">
-                          {contribution.project}
-                        </h4>
-                        <p className="text-xs text-white/60">
-                          {contribution.commits} commits
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <span className={`inline-flex items-center rounded px-2 py-0.5 text-xs font-medium ${contribution.impact === 'High' ? 'bg-blue-500/20 text-blue-300' :
-                          contribution.impact === 'Critical' ? 'bg-red-500/20 text-red-300' :
-                            contribution.impact === 'Essential' ? 'bg-green-500/20 text-green-300' :
-                              'bg-purple-500/20 text-purple-300'
-                          }`}>
-                          {contribution.impact}
+                    <div className="flex flex-col w-full">
+                      <div className="flex justify-between items-start mb-3">
+                        <div className="text-2xl">{snippet.icon}</div>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${snippet.color} text-white`}>
+                          {snippet.language}
                         </span>
+                      </div>
+
+                      <h4 className="text-lg font-bold text-white mb-2">{snippet.title}</h4>
+                      <p className="text-white/70 text-sm flex-grow">{snippet.description}</p>
+
+                      <div className="flex items-center gap-2 mt-3">
+                        <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse"></div>
+                        <span className="text-xs text-white/50">Live Preview</span>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-            </Reveal>
+            </div>
           </div>
+
+          {/* Contribution Stats */}
+          <Reveal delay={200}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-white/10">
+                <div className="text-4xl font-bold text-green-400 mb-3">8.9K+</div>
+                <div className="text-white/80 font-medium">Total Commits</div>
+                <div className="text-white/50 text-sm mt-2">Across all projects</div>
+              </div>
+              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/10">
+                <div className="text-4xl font-bold text-blue-400 mb-3">12+</div>
+                <div className="text-white/80 font-medium">Active Projects</div>
+                <div className="text-white/50 text-sm mt-2">Open source libraries</div>
+              </div>
+              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-white/10">
+                <div className="text-4xl font-bold text-purple-400 mb-3">4.2K+</div>
+                <div className="text-white/80 font-medium">GitHub Stars</div>
+                <div className="text-white/50 text-sm mt-2">Community appreciation</div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
+
+      <style jsx>{`
+        .animate-scroll-left {
+          display: inline-block;
+          animation: scroll-left 30s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   )
 }

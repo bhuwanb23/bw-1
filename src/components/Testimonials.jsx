@@ -102,7 +102,7 @@ const Testimonials = () => {
               onMouseLeave={() => setPausedRow(null)}
             >
               <div
-                className="flex gap-5 py-3.5 px-4"
+                className="flex gap-4 py-3 px-4"
                 style={{
                   animation: `testimonial-marquee ${animationDurations[rowIndex % animationDurations.length]}s linear infinite`,
                   animationDirection: rowIndex % 2 === 0 ? 'normal' : 'reverse',
@@ -112,29 +112,28 @@ const Testimonials = () => {
                 {[...row, ...row].map((testimonial, index) => (
                   <article
                     key={`${testimonial.name}-${index}`}
-                    className="flex min-w-[300px] max-w-[340px] flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-3.5 text-left shadow-[0_0_30px_rgba(15,23,42,0.25)] transition duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.08]"
+                    className="flex min-w-[320px] max-w-[320px] flex-col rounded-xl border border-white/10 bg-white/[0.04] p-3 text-left shadow-[0_0_20px_rgba(15,23,42,0.2)] transition duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.08]"
                   >
-                    <div className="flex items-center gap-3 mb-2.5">
-                      <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-[11px] font-bold">
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-[10px] font-bold">
                         {testimonial.name
                           .split(' ')
                           .map((n) => n[0])
                           .join('')}
                       </div>
                       <div>
-                        <p className="text-[13px] font-semibold text-white leading-tight">{testimonial.name}</p>
-                        <p className="text-[10px] uppercase tracking-[0.18em] text-white/50">
+                        <p className="text-xs font-semibold text-white leading-tight">{testimonial.name}</p>
+                        <p className="text-[9px] uppercase tracking-[0.15em] text-white/50">
                           {testimonial.role.split('&')[0]} • {testimonial.industry}
                         </p>
                       </div>
                       <span className="text-base">{testimonial.logo}</span>
                     </div>
-                    <p className="text-[11px] text-white/70 mb-2.5 leading-relaxed line-clamp-3">
+                    <p className="text-[10px] text-white/70 mb-2 leading-relaxed line-clamp-3">
                       “{testimonial.quote}”
                     </p>
-                    <div className="mt-auto text-[10px] text-white/60 flex flex-col gap-1.5 border-t border-white/10 pt-2.5">
-                      <span className="font-semibold text-white text-[11px]">{testimonial.result}</span>
-                      <span className="truncate">{testimonial.project}</span>
+                    <div className="mt-auto text-[9px] text-white/60 flex justify-between border-t border-white/10 pt-2">
+                      <span className="font-semibold text-white text-[10px]">{testimonial.result}</span>
                       <span>{testimonial.duration}</span>
                     </div>
                   </article>
