@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import { SECTION_HEADING } from '../constants/typography.js'
 
 const CallToActionBanner = () => {
   return (
@@ -12,7 +13,7 @@ const CallToActionBanner = () => {
             <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-blue-500/30 to-purple-500/20 blur-2xl" />
             
             <div className="relative">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+              <h2 className={`${SECTION_HEADING} mb-4`}>
                 Ready to build something{' '}
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                   amazing?

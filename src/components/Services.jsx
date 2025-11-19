@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import { SECTION_HEADING } from '../constants/typography.js'
 
 const services = [
   {
@@ -51,9 +52,7 @@ const Services = () => {
     <section id="services" className="py-32 min-h-screen flex items-center">
       <div className="flex flex-col gap-20 w-full">
         <Reveal className="reveal-up text-center" amount={0.15}>
-          <h2 className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight">
-            Our Core Expertise
-          </h2>
+          <h2 className={`${SECTION_HEADING} mb-6`}>Our Core Expertise</h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto font-light">
             We transform complex challenges into elegant, high-performance digital solutions.
           </p>

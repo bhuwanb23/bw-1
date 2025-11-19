@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import Reveal from './Reveal.jsx'
+import { SECTION_HEADING } from '../constants/typography.js'
 
 const products = [
   {
@@ -122,21 +123,22 @@ const ProductsShowcase = () => {
       </div>
       
       <div className="relative perspective-1000">
-        <Reveal className="text-center mb-20" amount={0.2}>
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
+          <Reveal className="text-center mb-8" amount={0.2}>
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-3 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-purple-400 animate-pulse" />
-            <span>Product Gallery</span>
+            <span>product gallery</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className={`${SECTION_HEADING} mb-3`}>
             Interactive{' '}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
               Product Universe
             </span>
           </h2>
-          <p className="text-lg text-white/60 max-w-3xl mx-auto font-light">
+          <p className="text-sm text-white/60 max-w-xl mx-auto font-light">
             Explore our innovative solutions through an immersive 3D experience. Hover and interact with each product card.
           </p>
         </Reveal>
+
 
         {/* Morphing 3D Cards Grid */}
         <div className="grid gap-8 md:gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-4">

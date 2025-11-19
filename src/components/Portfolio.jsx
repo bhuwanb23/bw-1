@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import { SECTION_HEADING } from '../constants/typography.js'
 
 const projects = [
   {
@@ -37,9 +38,7 @@ const Portfolio = () => {
     <section id="portfolio" className="py-32 min-h-screen flex items-center">
       <div className="flex flex-col gap-20 w-full">
         <Reveal className="reveal-up text-center" amount={0.2}>
-          <h2 className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight">
-            Innovations We've Built
-          </h2>
+          <h2 className={`${SECTION_HEADING} mb-6`}>Innovations We've Built</h2>
           <p className="text-lg text-white/60 font-light">A glimpse into our portfolio of success stories.</p>
         </Reveal>
 

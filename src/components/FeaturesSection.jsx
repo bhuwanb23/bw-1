@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal.jsx'
+import { SECTION_HEADING } from '../constants/typography.js'
 
 const features = [
   {
@@ -73,7 +74,7 @@ const FeaturesSection = () => {
             <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
             <span>Our Core Expertise</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 tracking-tight">
+          <h2 className={`${SECTION_HEADING} mb-6`}>
             We transform complex challenges into{' '}
             <span className="bg-gradient-to-r from-sky-400 via-purple-400 to-sky-500 bg-clip-text text-transparent animate-pulse">
               elegant solutions.

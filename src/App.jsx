@@ -23,7 +23,7 @@ function App() {
 
       <Header />
       <div className="relative z-20">
-        <main className="relative mx-auto w-full max-w-7xl px-6 pt-28 sm:px-10">
+        <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
           <Hero />
           <FeaturesSection />
           <ServicesOverview />

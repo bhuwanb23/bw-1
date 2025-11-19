@@ -1,5 +1,6 @@
 import Reveal from './Reveal.jsx'
 import Footer from './Footer.jsx'
+import { SECTION_HEADING } from '../constants/typography.js'
 
 const Contact = () => {
   return (
@@ -7,9 +8,7 @@ const Contact = () => {
       <div className="w-full">
         <Reveal className="text-center space-y-6" amount={0.2}>
           <div className="rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm p-12 max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight">
-              Ready to Build the Future?
-            </h2>
+            <h2 className={`${SECTION_HEADING} mb-6`}>Ready to Build the Future?</h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 font-light">
               Let's discuss how Nulfinity can elevate your business with cutting-edge software solutions. Your vision, our expertise.
             </p>

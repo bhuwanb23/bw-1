@@ -1,3 +1,5 @@
+import { SECTION_HEADING } from '../constants/typography.js'
+
 const SectionTitle = ({ eyebrow, title, subtitle, align = 'left' }) => {
   const alignment = align === 'center' ? 'text-center items-center' : 'text-left items-start'
 
@@ -8,7 +10,7 @@ const SectionTitle = ({ eyebrow, title, subtitle, align = 'left' }) => {
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="text-5xl md:text-6xl font-semibold leading-tight text-white tracking-tight">
+      <h2 className={`${SECTION_HEADING} leading-tight`}>
         {title}
       </h2>
       {subtitle ? (
