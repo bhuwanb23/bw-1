@@ -5,7 +5,7 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Products', href: '/products' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Proposal', href: '/proposal' }
 ]
 
 const Header = () => {
@@ -72,7 +72,7 @@ const Header = () => {
         </nav>
 
         <Link
-          to="#contact"
+          to="/proposal"
           className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_0_20px_rgba(56,189,248,0.7)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(56,189,248,0.9)] sm:text-[11px] sm:tracking-[0.22em] sm:px-5 md:inline-flex group"
         >
           <span className="transition-transform duration-300 group-hover:translate-x-1">Request a Proposal</span>
@@ -117,11 +117,11 @@ const Header = () => {
 
           {/* Contact Button */}
           <Link
-            to="#contact"
+            to="/proposal"
             className="mt-12 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-6 py-3 text-base font-semibold uppercase tracking-widest text-white shadow-[0_0_30px_rgba(56,189,248,0.7)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(56,189,248,0.9)] group"
             onClick={() => setIsMenuOpen(false)}
           >
-            <span className="transition-transform duration-300 group-hover:translate-x-1">Contact Us</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1">Request a Proposal</span>
             <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>

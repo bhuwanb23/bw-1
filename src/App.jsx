@@ -13,6 +13,7 @@ import Footer from './components/Footer.jsx'
 import SplineBackground from './components/SplineBackground.jsx'
 import ServicesPage from './pages/services.jsx'
 import ProductsPage from './pages/products.jsx'
+import ProposalPage from './pages/proposal.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 
 function App() {
@@ -41,7 +42,6 @@ function App() {
                 <Testimonials />
                 <TechStackSlider />
                 <CallToActionBanner />
-
               </main>
             } />
             <Route path="/services" element={
@@ -54,9 +54,14 @@ function App() {
                 <ProductsPage />
               </main>
             } />
+            <Route path="/proposal" element={
+              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+                <ProposalPage />
+              </main>
+            } />
           </Routes>
         </div>
-        <div className="mt-24 mr-16 ml-16">
+        <div className="mt-24 mr-16 ml-16 ">
           <Footer />
         </div>
         <div className="pointer-events-none fixed inset-x-0 top-40 mx-auto h-[600px] max-w-5xl rounded-full bg-gradient-to-b from-transparent via-blue-500/5 via-purple-500/5 to-transparent blur-[220px] z-10" />
