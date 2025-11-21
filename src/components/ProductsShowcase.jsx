@@ -29,24 +29,6 @@ const products = [
     status: 'Open Source',
     color: 'from-emerald-500 to-teal-500',
     year: '2023'
-  },
-  {
-    id: 4,
-    title: 'CloudSync Pro',
-    subtitle: 'Multi-Cloud Management',
-    icon: '☁️',
-    status: 'Enterprise',
-    color: 'from-sky-500 to-blue-500',
-    year: '2024'
-  },
-  {
-    id: 5,
-    title: 'Neural Search',
-    subtitle: 'AI-Powered Search',
-    icon: '🔍',
-    status: 'Research',
-    color: 'from-orange-500 to-amber-500',
-    year: '2024'
   }
 ]
 
@@ -170,6 +152,21 @@ const ProductsShowcase = () => {
               </div>
             </Reveal>
           ))}
+        </div>
+        
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:from-purple-700 hover:to-pink-700 transition-all duration-300 group">
+            View All Products
+            <svg 
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
         
         {/* Interactive Stats */}

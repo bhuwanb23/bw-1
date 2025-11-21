@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 import { SECTION_HEADING } from '../constants/typography.js'
 
@@ -66,20 +66,11 @@ const services = [
 ]
 
 const ServicesOverview = () => {
-  const scrollContainerRef = useRef(null)
   const [hoveredCard, setHoveredCard] = useState(null)
+  const [showAll, setShowAll] = useState(false)
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' })
-    }
-  }
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' })
-    }
-  }
+  // Determine which services to display
+  const displayedServices = showAll ? services : services.slice(0, 4)
 
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
@@ -102,34 +93,10 @@ const ServicesOverview = () => {
           </p>
         </Reveal>
 
-        {/* Horizontal Scrolling Container */}
-        <div className="relative">
-          {/* Scroll Buttons */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-black/60 border border-white/10 text-white/70 backdrop-blur-xl transition-all duration-300 hover:bg-black/80 hover:text-white hover:scale-110"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-black/60 border border-white/10 text-white/70 backdrop-blur-xl transition-all duration-300 hover:bg-black/80 hover:text-white hover:scale-110"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Scrollable Cards Container */}
-          <div
-            ref={scrollContainerRef}
-            className="service-rail overflow-x-auto scrollbar-hide px-8 py-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {services.map((service, index) => (
+        {/* Centered Cards Container */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {displayedServices.map((service, index) => (
               <Reveal
                 key={service.title}
                 as="div"
@@ -138,7 +105,9 @@ const ServicesOverview = () => {
               >
                 {/* Enhanced Card UI with Hover Flip Animation */}
                 <div
-                  className="group relative w-72 h-96 rounded-2xl overflow-hidden cursor-pointer"
+                  className={`group relative w-72 h-96 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                    hoveredCard !== null && hoveredCard !== index ? 'blur-sm opacity-70' : ''
+                  }`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -146,13 +115,17 @@ const ServicesOverview = () => {
                   <div className={`relative w-full h-full transition-transform duration-700 transform-style-3d ${hoveredCard === index ? 'rotate-y-180' : ''}`}>
                     {/* Front of Card */}
                     <div className="absolute inset-0 backface-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl">
-                      {/* Bright gradient background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-20 blur-2xl`}></div>
+                      {/* Full gradient background on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.color} ${
+                        hoveredCard === index ? 'opacity-100' : 'opacity-20'
+                      } blur-2xl transition-opacity duration-300`}></div>
 
-                      {/* White circular shapes */}
-                      <div className="absolute top-10 right-10 w-24 h-24 rounded-full bg-white/5 blur-xl"></div>
-                      <div className="absolute bottom-20 left-10 w-16 h-16 rounded-full bg-white/10 blur-xl"></div>
-                      <div className="absolute top-1/2 left-1/4 w-12 h-12 rounded-full bg-white/5 blur-xl"></div>
+                      {/* Moving glass morphism shapes */}
+                      <div className="absolute top-0 left-0 w-full h-full">
+                        <div className="absolute top-10 right-10 w-24 h-24 rounded-full bg-white/10 blur-xl animate-move-1"></div>
+                        <div className="absolute bottom-20 left-10 w-16 h-16 rounded-full bg-white/15 blur-xl animate-move-2"></div>
+                        <div className="absolute top-1/2 left-1/4 w-12 h-12 rounded-full bg-white/10 blur-xl animate-move-3"></div>
+                      </div>
 
                       {/* Content */}
                       <div className="relative h-full flex flex-col p-6 z-10">
@@ -195,13 +168,17 @@ const ServicesOverview = () => {
 
                     {/* Back of Card */}
                     <div className="absolute inset-0 backface-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rotate-y-180">
-                      {/* Bright gradient background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-30 blur-3xl`}></div>
+                      {/* Full gradient background on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.color} ${
+                        hoveredCard === index ? 'opacity-100' : 'opacity-30'
+                      } blur-3xl transition-opacity duration-300`}></div>
 
-                      {/* White circular shapes */}
-                      <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-white/10 blur-2xl"></div>
-                      <div className="absolute bottom-20 left-10 w-20 h-20 rounded-full bg-white/15 blur-2xl"></div>
-                      <div className="absolute top-1/3 left-1/3 w-16 h-16 rounded-full bg-white/10 blur-2xl"></div>
+                      {/* Moving glass morphism shapes */}
+                      <div className="absolute top-0 left-0 w-full h-full">
+                        <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl animate-move-1"></div>
+                        <div className="absolute bottom-20 left-10 w-20 h-20 rounded-full bg-white/20 blur-2xl animate-move-2"></div>
+                        <div className="absolute top-1/3 left-1/3 w-16 h-16 rounded-full bg-white/15 blur-2xl animate-move-3"></div>
+                      </div>
 
                       <div className="relative h-full flex flex-col p-6 z-10">
                         {/* Icon */}
@@ -237,16 +214,27 @@ const ServicesOverview = () => {
             ))}
           </div>
         </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:from-purple-700 hover:to-pink-700 transition-all duration-300 group"
+          >
+            {showAll ? 'Show Less' : 'View All Services'}
+            <svg 
+              className={`w-4 h-4 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <style jsx>{`
-        .service-rail {
-          display: flex;
-          gap: 2rem;
-          transform-style: preserve-3d;
-          perspective: 1600px;
-        }
-        
         .transform-style-3d {
           transform-style: preserve-3d;
         }
@@ -259,12 +247,37 @@ const ServicesOverview = () => {
           backface-visibility: hidden;
         }
         
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+        @keyframes move-1 {
+          0%, 100% { transform: translate(0, 0); }
+          25% { transform: translate(10px, 15px); }
+          50% { transform: translate(-15px, 10px); }
+          75% { transform: translate(10px, -15px); }
         }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+        
+        @keyframes move-2 {
+          0%, 100% { transform: translate(0, 0); }
+          25% { transform: translate(-10px, -15px); }
+          50% { transform: translate(15px, -10px); }
+          75% { transform: translate(-10px, 15px); }
+        }
+        
+        @keyframes move-3 {
+          0%, 100% { transform: translate(0, 0); }
+          25% { transform: translate(15px, -10px); }
+          50% { transform: translate(-10px, 15px); }
+          75% { transform: translate(15px, 10px); }
+        }
+        
+        .animate-move-1 {
+          animation: move-1 8s infinite ease-in-out;
+        }
+        
+        .animate-move-2 {
+          animation: move-2 10s infinite ease-in-out;
+        }
+        
+        .animate-move-3 {
+          animation: move-3 12s infinite ease-in-out;
         }
       `}</style>
     </section>

@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="relative overflow-hidden bg-black">
       <SplineBackground />
-      <div className="pointer-events-none fixed inset-0 z-10">
+      <div className="pointer-events-none fixed inset-0 z-10 bg-black-500">
         <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-blue-500/10 to-transparent opacity-20" />
         <div className="absolute left-0 top-0 h-40 w-40 -translate-x-1/2 rounded-full bg-blue-500/8 blur-[160px]" />
         <div className="absolute right-0 bottom-0 h-60 w-60 translate-x-1/3 rounded-full bg-purple-500/8 blur-[180px]" />
@@ -23,7 +23,7 @@ function App() {
 
       <Header />
       <div className="relative z-20">
-        <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+        <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12 bg-black-700">
           <Hero />
           <FeaturesSection />
           <ServicesOverview />
