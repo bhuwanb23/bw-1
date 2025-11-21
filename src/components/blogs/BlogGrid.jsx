@@ -1,138 +1,76 @@
-import { useState } from 'react'
+const viewLayouts = {
+  grid: 'grid grid-cols-1 gap-6 md:grid-cols-2',
+  list: 'space-y-4',
+  compact: 'grid grid-cols-1 gap-4 lg:grid-cols-3'
+}
 
-const BlogGrid = ({ selectedCategory }) => {
-  // Mock data for blog articles
-  const articles = [
-    {
-      id: 1,
-      title: "Building Scalable Microservices with Kubernetes",
-      excerpt: "A comprehensive guide to designing and deploying microservices architecture using Kubernetes orchestration.",
-      category: "Cloud & DevOps",
-      author: {
-        name: "Sarah Johnson",
-        avatar: "SJ"
-      },
-      readTime: "12 min read",
-      date: "May 10, 2025"
-    },
-    {
-      id: 2,
-      title: "The Rise of Low-Code Development Platforms",
-      excerpt: "How low-code platforms are democratizing software development and accelerating digital transformation.",
-      category: "Software Engineering",
-      author: {
-        name: "Michael Chen",
-        avatar: "MC"
-      },
-      readTime: "6 min read",
-      date: "May 5, 2025"
-    },
-    {
-      id: 3,
-      title: "Demystifying Neural Architecture Search",
-      excerpt: "Understanding automated machine learning techniques for optimizing deep learning models.",
-      category: "AI/ML",
-      author: {
-        name: "David Rodriguez",
-        avatar: "DR"
-      },
-      readTime: "15 min read",
-      date: "April 28, 2025"
-    },
-    {
-      id: 4,
-      title: "Design Systems for Enterprise Applications",
-      excerpt: "Creating consistent and scalable design systems for large-scale software products.",
-      category: "Design & UI/UX",
-      author: {
-        name: "Emma Wilson",
-        avatar: "EW"
-      },
-      readTime: "9 min read",
-      date: "April 22, 2025"
-    },
-    {
-      id: 5,
-      title: "Open Source Security Best Practices",
-      excerpt: "Essential security measures every developer should implement when working with open source components.",
-      category: "Open Source",
-      author: {
-        name: "James Park",
-        avatar: "JP"
-      },
-      readTime: "7 min read",
-      date: "April 18, 2025"
-    },
-    {
-      id: 6,
-      title: "Serverless Computing: Beyond the Hype",
-      excerpt: "Real-world applications and performance considerations for serverless architectures.",
-      category: "Cloud & DevOps",
-      author: {
-        name: "Lisa Thompson",
-        avatar: "LT"
-      },
-      readTime: "11 min read",
-      date: "April 12, 2025"
-    }
-  ]
-
-  const filteredArticles = selectedCategory === 'All' 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory)
+const BlogGrid = ({ articles = [], view = 'grid', emptyMessage = 'No articles match your filters.' }) => {
+  const layout = viewLayouts[view] || viewLayouts.grid
 
   return (
-    <div className="mb-12">
-      <h2 className="text-2xl font-bold text-white mb-6">Latest Articles</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredArticles.map((article) => (
-          <div 
-            key={article.id}
-            className="rounded-xl overflow-hidden border border-white/10 bg-black/20 backdrop-blur-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:-translate-y-1"
-          >
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <div className="inline-block px-2 py-1 text-xs font-semibold text-purple-300 bg-purple-900/30 rounded">
+    <section className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p className="text-xs uppercase tracking-[0.35em] text-white/50">Latest</p>
+          <h2 className="text-2xl font-semibold text-white">Articles & Deep Dives</h2>
+        </div>
+      </div>
+
+      {articles.length === 0 ? (
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-10 text-center text-white/70">
+          {emptyMessage}
+        </div>
+      ) : (
+        <div className={layout}>
+          {articles.map((article) => (
+            <article
+              key={article.id}
+              className="group rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-white/30 hover:bg-black/50"
+            >
+              <div className="flex items-center justify-between text-xs text-white/60">
+                <span className="inline-flex items-center rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-white/70">
                   {article.category}
-                </div>
-                <span className="text-xs text-white/60">{article.readTime}</span>
+                </span>
+                <span>{article.readTime}</span>
               </div>
-              
-              <h3 className="text-xl font-bold text-white mb-3">{article.title}</h3>
-              
-              <p className="text-white/80 text-sm mb-4">{article.excerpt}</p>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">
+
+              <div className="mt-4 space-y-3">
+                <h3 className="text-xl font-semibold text-white leading-tight group-hover:text-blue-300 transition-colors">
+                  {article.title}
+                </h3>
+                <p className="text-white/70 text-sm">{article.excerpt}</p>
+
+                {article.tags?.length ? (
+                  <div className="flex flex-wrap gap-2">
+                    {article.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.2em] text-white/50"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="mt-6 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-[11px] font-bold text-white flex items-center justify-center">
                     {article.author.avatar}
                   </div>
                   <div>
-                    <p className="text-white text-sm font-medium">{article.author.name}</p>
-                    <p className="text-white/60 text-xs">{article.date}</p>
+                    <p className="text-sm font-medium text-white">{article.author.name}</p>
+                    <p className="text-xs text-white/50">{article.date}</p>
                   </div>
                 </div>
-                
-                <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                  Read →
-                </button>
+                <button className="text-sm font-semibold text-blue-400 hover:text-blue-300">Read →</button>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      {/* Pagination */}
-      <div className="flex justify-center mt-8">
-        <div className="flex space-x-2">
-          <button className="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium">1</button>
-          <button className="px-4 py-2 rounded-lg border border-white/10 bg-black/20 text-white font-medium hover:bg-white/10">2</button>
-          <button className="px-4 py-2 rounded-lg border border-white/10 bg-black/20 text-white font-medium hover:bg-white/10">3</button>
-          <button className="px-4 py-2 rounded-lg border border-white/10 bg-black/20 text-white font-medium hover:bg-white/10">Next →</button>
+            </article>
+          ))}
         </div>
-      </div>
-    </div>
+      )}
+    </section>
   )
 }
 

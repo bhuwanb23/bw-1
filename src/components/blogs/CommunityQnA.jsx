@@ -1,61 +1,17 @@
 import { useState } from 'react'
 
-const CommunityQnA = () => {
+const CommunityQnA = ({ questions = [], onAskQuestion }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [questionTitle, setQuestionTitle] = useState('')
   const [questionBody, setQuestionBody] = useState('')
   const [questionTags, setQuestionTags] = useState('')
 
-  // Mock data for questions
-  const questions = [
-    {
-      id: 1,
-      title: "How to optimize React performance with useMemo and useCallback?",
-      excerpt: "I'm working on a large React application and experiencing performance issues. What are the best practices for using useMemo and useCallback effectively?",
-      author: {
-        name: "Alex Johnson",
-        avatar: "AJ"
-      },
-      tags: ["React", "Performance", "JavaScript"],
-      votes: 24,
-      answers: 8,
-      timestamp: "2 hours ago"
-    },
-    {
-      id: 2,
-      title: "Best practices for securing REST APIs?",
-      excerpt: "What are the essential security measures I should implement for a REST API serving a web application?",
-      author: {
-        name: "Sarah Miller",
-        avatar: "SM"
-      },
-      tags: ["Security", "API", "Backend"],
-      votes: 18,
-      answers: 5,
-      timestamp: "5 hours ago"
-    },
-    {
-      id: 3,
-      title: "Implementing CI/CD pipeline with GitHub Actions",
-      excerpt: "How can I set up a complete CI/CD pipeline for a Node.js application using GitHub Actions?",
-      author: {
-        name: "Mike Chen",
-        avatar: "MC"
-      },
-      tags: ["CI/CD", "GitHub", "DevOps"],
-      votes: 15,
-      answers: 3,
-      timestamp: "1 day ago"
-    }
-  ]
-
   const handleAskQuestion = (e) => {
     e.preventDefault()
-    // Question submission logic would go here
-    console.log({
+    onAskQuestion?.({
       title: questionTitle,
       body: questionBody,
-      tags: questionTags
+      tags: questionTags.split(',').map((tag) => tag.trim())
     })
     setIsModalOpen(false)
     setQuestionTitle('')
@@ -64,144 +20,129 @@ const CommunityQnA = () => {
   }
 
   return (
-    <div className="mb-16">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+    <section className="mb-16">
+      <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Ask Questions. Share Knowledge.</h2>
-          <p className="text-white/70">Community discussions and technical Q&A</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-white/40">Community</p>
+          <h2 className="text-2xl font-semibold text-white">Ask Questions. Share Knowledge.</h2>
+          <p className="text-white/60 text-sm">Community discussions and technical Q&A</p>
         </div>
-        <button 
+        <button
           onClick={() => setIsModalOpen(true)}
-          className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+          className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 text-white font-medium transition-all duration-300 hover:scale-105"
         >
-          Ask a Question
+          Ask a question
         </button>
       </div>
 
       <div className="space-y-6">
         {questions.map((question) => (
-          <div 
+          <article
             key={question.id}
-            className="rounded-xl border border-white/10 bg-black/20 backdrop-blur-xl p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:-translate-y-1"
+            className="rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/30"
           >
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <div className="flex flex-col items-center bg-black/30 rounded-lg p-3 min-w-[80px]">
-                <span className="text-2xl font-bold text-white">{question.votes}</span>
-                <span className="text-white/60 text-sm">votes</span>
+            <div className="flex flex-col gap-4 md:flex-row">
+              <div className="flex items-center justify-center rounded-2xl bg-white/5 px-6 py-4 text-center">
+                <div>
+                  <p className="text-3xl font-semibold text-white">{question.votes}</p>
+                  <p className="text-xs uppercase tracking-[0.35em] text-white/60">votes</p>
+                </div>
               </div>
-              
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-white mb-2 hover:text-blue-400 cursor-pointer">
-                  {question.title}
-                </h3>
-                <p className="text-white/80 mb-4">{question.excerpt}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {question.tags.map((tag, index) => (
-                    <span 
-                      key={index}
-                      className="px-2 py-1 text-xs rounded-full bg-blue-900/30 text-blue-300"
-                    >
+
+              <div className="flex-1 space-y-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{question.title}</h3>
+                  <p className="text-sm text-white/70">{question.excerpt}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {question.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-blue-900/30 px-3 py-1 text-xs text-blue-200">
                       {tag}
                     </span>
                   ))}
                 </div>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">
+
+                <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-white/70">
+                  <div className="flex items-center gap-3">
+                    <div className="h-9 w-9 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-xs font-bold text-white flex items-center justify-center">
                       {question.author.avatar}
                     </div>
                     <div>
-                      <p className="text-white text-sm font-medium">{question.author.name}</p>
-                      <p className="text-white/60 text-xs">{question.timestamp}</p>
+                      <p className="text-white font-medium">{question.author.name}</p>
+                      <p className="text-white/50 text-xs">{question.timestamp}</p>
                     </div>
                   </div>
-                  
-                  <div className="flex items-center space-x-4 text-white/70 text-sm">
-                    <span>{question.answers} answers</span>
-                  </div>
+                  <span>{question.answers} answers</span>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
-      {/* Ask Question Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-black/80 border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold text-white">Ask a Question</h3>
-                <button 
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">
+          <div className="w-full max-w-2xl rounded-3xl border border-white/10 bg-black/80">
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+              <h3 className="text-xl font-semibold text-white">Ask a Question</h3>
+              <button onClick={() => setIsModalOpen(false)} className="text-white/60 hover:text-white">
+                ✕
+              </button>
+            </div>
+            <form onSubmit={handleAskQuestion} className="space-y-6 p-6">
+              <div>
+                <label className="mb-2 block text-sm font-medium text-white">Question title</label>
+                <input
+                  type="text"
+                  required
+                  value={questionTitle}
+                  onChange={(e) => setQuestionTitle(e.target.value)}
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  placeholder="Be specific and concise"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-white">Details</label>
+                <textarea
+                  rows={6}
+                  required
+                  value={questionBody}
+                  onChange={(e) => setQuestionBody(e.target.value)}
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  placeholder="Include code snippets, context, and constraints"
+                ></textarea>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-white">Tags</label>
+                <input
+                  type="text"
+                  value={questionTags}
+                  onChange={(e) => setQuestionTags(e.target.value)}
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  placeholder="react, performance, security"
+                />
+              </div>
+              <div className="flex justify-end gap-3">
+                <button
+                  type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="text-white/60 hover:text-white"
+                  className="rounded-full border border-white/10 px-6 py-2 text-white hover:bg-white/10"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-2 font-semibold text-white hover:shadow-[0_10px_35px_rgba(59,130,246,0.35)]"
+                >
+                  Post question
                 </button>
               </div>
-              
-              <form onSubmit={handleAskQuestion} className="space-y-6">
-                <div>
-                  <label className="block text-white font-medium mb-2">Question Title</label>
-                  <input
-                    type="text"
-                    placeholder="Be specific and imagine you're asking a friend"
-                    className="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-white placeholder-white/50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={questionTitle}
-                    onChange={(e) => setQuestionTitle(e.target.value)}
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-white font-medium mb-2">Question Details</label>
-                  <textarea
-                    placeholder="Include all the information someone would need to answer your question"
-                    rows={6}
-                    className="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-white placeholder-white/50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={questionBody}
-                    onChange={(e) => setQuestionBody(e.target.value)}
-                    required
-                  ></textarea>
-                </div>
-                
-                <div>
-                  <label className="block text-white font-medium mb-2">Tags</label>
-                  <input
-                    type="text"
-                    placeholder="Enter tags separated by commas"
-                    className="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-white placeholder-white/50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={questionTags}
-                    onChange={(e) => setQuestionTags(e.target.value)}
-                  />
-                </div>
-                
-                <div className="flex justify-end space-x-3 pt-4">
-                  <button
-                    type="button"
-                    onClick={() => setIsModalOpen(false)}
-                    className="px-6 py-2 rounded-lg border border-white/10 bg-black/30 text-white font-medium hover:bg-white/10 transition-colors duration-200"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
-                  >
-                    Post Question
-                  </button>
-                </div>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
       )}
-    </div>
+    </section>
   )
 }
 
