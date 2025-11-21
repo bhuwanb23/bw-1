@@ -8,7 +8,7 @@ const ServicesHero = () => {
   }, [])
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden flex items-center justify-center min-h-screen">
+    <section className="relative overflow-hidden min-h-screen flex items-center justify-center">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating particles with enhanced animation */}
@@ -77,6 +77,23 @@ const ServicesHero = () => {
           </svg>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          25% {
+            transform: translate(10px, 10px) scale(1.1);
+          }
+          50% {
+            transform: translate(-10px, 15px) scale(0.9);
+          }
+          75% {
+            transform: translate(15px, -10px) scale(1.2);
+          }
+        }
+      `}</style>
     </section>
   )
 }

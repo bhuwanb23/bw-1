@@ -8,7 +8,7 @@ const ProductsHero = () => {
   }, [])
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden flex items-center justify-center min-h-screen">
+    <section className="relative overflow-hidden flex items-center justify-center min-h-screen">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating particles with enhanced animation */}

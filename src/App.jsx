@@ -14,6 +14,7 @@ import SplineBackground from './components/SplineBackground.jsx'
 import ServicesPage from './pages/services.jsx'
 import ProductsPage from './pages/products.jsx'
 import ProposalPage from './pages/proposal.jsx'
+import BlogPage from './pages/blog.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 
 function App() {
@@ -57,6 +58,11 @@ function App() {
             <Route path="/proposal" element={
               <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
                 <ProposalPage />
+              </main>
+            } />
+            <Route path="/blog" element={
+              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+                <BlogPage />
               </main>
             } />
           </Routes>

@@ -8,7 +8,7 @@ const ProposalHero = () => {
   }, [])
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating particles */}
