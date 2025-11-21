@@ -118,7 +118,7 @@ const CaseStudiesPreview = () => {
           {caseStudies.map((study, index) => (
             <div
               key={study.id}
-              className={`group relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl transition-all duration-700 ${
+              className={`group relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl transition-all duration-700 ${
                 visibleStudies.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               onMouseEnter={() => setHoveredIndex(index)}

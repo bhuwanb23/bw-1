@@ -12,10 +12,13 @@ import CallToActionBanner from './components/CallToActionBanner.jsx'
 import Footer from './components/Footer.jsx'
 import SplineBackground from './components/SplineBackground.jsx'
 import ServicesPage from './pages/services.jsx'
+import ProductsPage from './pages/products.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative overflow-hidden bg-black-900">
         <SplineBackground />
         <div className="pointer-events-none fixed inset-0 z-10">
@@ -38,9 +41,7 @@ function App() {
                 <Testimonials />
                 <TechStackSlider />
                 <CallToActionBanner />
-                <div className="mt-24">
-                  <Footer />
-                </div>
+
               </main>
             } />
             <Route path="/services" element={
@@ -48,9 +49,16 @@ function App() {
                 <ServicesPage />
               </main>
             } />
+            <Route path="/products" element={
+              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+                <ProductsPage />
+              </main>
+            } />
           </Routes>
         </div>
-
+        <div className="mt-24 mr-16 ml-16">
+          <Footer />
+        </div>
         <div className="pointer-events-none fixed inset-x-0 top-40 mx-auto h-[600px] max-w-5xl rounded-full bg-gradient-to-b from-transparent via-blue-500/5 via-purple-500/5 to-transparent blur-[220px] z-10" />
         <div className="pointer-events-none fixed inset-x-0 bottom-0 h-72 bg-[radial-gradient(ellipse_at_bottom,_rgba(59,130,246,0.08),_transparent)] z-10" />
       </div>

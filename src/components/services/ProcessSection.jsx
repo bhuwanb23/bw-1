@@ -152,7 +152,7 @@ const ProcessSection = () => {
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'pr-16 md:pr-24 text-right' : 'pl-16 md:pl-24'}`}>
                   <div className={`p-8 rounded-3xl border transition-all duration-500 transform hover:scale-105 ${
                     activeStep === index
-                      ? 'border-white/30 bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl shadow-2xl'
+                      ? 'border-white/30 bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl shadow-2xl'
                       : 'border-white/10 bg-black/20 hover:border-white/20'
                   }`}
                   style={{

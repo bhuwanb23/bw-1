@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const ServicesHero = () => {
+const ProductsHero = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -43,26 +43,26 @@ const ServicesHero = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-8 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
-            <span>Our Services</span>
+            <span>Our Products</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            <span className="block mb-2">Our</span>
+            <span className="block mb-2">Innovative</span>
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Services
+              Solutions
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-10">
-            Cutting-edge technology solutions designed to transform your business and drive innovation forward
+            Premium technology products designed to empower businesses and developers
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl">
-              Explore Services
+              Explore Products
             </button>
             <button className="px-8 py-4 rounded-full border border-white/20 bg-black/30 text-white font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
-              Contact Us
+              Request Demo
             </button>
           </div>
         </div>
@@ -81,4 +81,4 @@ const ServicesHero = () => {
   )
 }
 
-export default ServicesHero
+export default ProductsHero

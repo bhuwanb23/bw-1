@@ -59,7 +59,7 @@ const DetailedServices = () => {
               key={service.id}
               className={`rounded-2xl border cursor-pointer transition-all duration-500 transform ${
                 hoveredService === service.id
-                  ? 'border-white/30 bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl scale-105 shadow-2xl'
+                  ? 'border-white/30 bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl scale-105 shadow-2xl'
                   : 'border-white/10 bg-black/20 hover:border-white/20'
               }`}
               style={{
