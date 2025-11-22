@@ -1,16 +1,83 @@
-# React + Vite
+# Nulfinity
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive business website built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🚀 Modern React 19 with Vite
+- 🎨 Tailwind CSS 4 for styling
+- 📱 Fully responsive design
+- 🎭 Beautiful animations and interactions
+- 🔄 React Router for navigation
+- ✨ Glassmorphism UI effects
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 18+ and npm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/nulfinity.git
+cd nulfinity
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start development server
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Deployment
+
+This project is configured for deployment on Render. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
+
+### Quick Deploy to Render
+
+1. Push your code to GitHub
+2. Sign up at [render.com](https://render.com)
+3. Create a new Static Site
+4. Connect your GitHub repository
+5. Set build command: `npm install && npm run build`
+6. Set publish directory: `dist`
+7. Deploy!
+
+## Project Structure
+
+```
+src/
+├── components/     # React components
+├── pages/          # Page components
+├── hooks/          # Custom React hooks
+├── data/           # Data files
+├── constants/      # Constants and config
+└── assets/         # Static assets
+```
+
+## Technologies
+
+- React 19
+- Vite 7
+- Tailwind CSS 4
+- React Router DOM
+- Spline 3D (for background)
+
+## License
+
+Private project - All rights reserved
