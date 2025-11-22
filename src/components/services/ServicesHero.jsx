@@ -39,7 +39,7 @@ const ServicesHero = () => {
         }}></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center -mt-16 sm:-mt-20 md:-mt-24">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-8 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />

@@ -9,12 +9,11 @@ const ServicesPage = () => {
   return (
     <div className="relative overflow-hidden bg-transparent min-h-screen">
       <div className="relative z-20">
-        <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+        <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ServicesHero />
           <ServiceCategories />
           <DetailedServices />
           <ProcessSection />
-          <CaseStudiesPreview />
           <ServicesCTA />
         </main>
       </div>

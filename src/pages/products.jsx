@@ -4,14 +4,13 @@ import ProductFilterBar from '../components/products/ProductFilterBar.jsx'
 import ProductGrid from '../components/products/ProductGrid.jsx'
 import SocialProof from '../components/products/SocialProof.jsx'
 import DeveloperDocsCTA from '../components/products/DeveloperDocsCTA.jsx'
-import AdminTools from '../components/products/AdminTools.jsx'
 import ProductsFooterCTA from '../components/products/ProductsFooterCTA.jsx'
 
 const ProductsPage = () => {
   return (
-    <div className="relative overflow-hidden bg-transparent min-h-screen">
+    <div className="relative overflow-hidden bg-transparent">
       <div className="relative z-20">
-        <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+        <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ProductsHero />
           <FeaturedProducts />
           <ProductFilterBar />

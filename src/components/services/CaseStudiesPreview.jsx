@@ -118,68 +118,57 @@ const CaseStudiesPreview = () => {
           {caseStudies.map((study, index) => (
             <div
               key={study.id}
-              className={`group relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl transition-all duration-700 ${
-                visibleStudies.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`case-card group relative transition-all duration-500 ${
+                visibleStudies.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              style={{
-                transform: hoveredIndex === index ? 'translateY(-20px) scale(1.02)' : 'translateY(0) scale(1)',
-                boxShadow: hoveredIndex === index ? `0 0 50px -15px rgba(192, 132, 252, 0.5)` : '0 0 20px -10px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.5s ease, box-shadow 0.5s ease'
-              }}
             >
-              {/* Gradient background overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-0 transition-opacity duration-500 group-hover:opacity-10 rounded-2xl`}></div>
-              
-              {/* Animated decorative elements */}
-              <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${study.color} opacity-10 blur-3xl transition-all duration-700 group-hover:opacity-20 group-hover:scale-150`}></div>
-              
-              <div className="p-6 h-full flex flex-col">
-                <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-black/60 to-black/40 mb-6 border border-white/10 text-3xl transform group-hover:scale-110 transition-transform duration-300">
-                  {study.image}
-                </div>
-                
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/80 transition-all duration-300">
-                  {study.title}
-                </h3>
-                <p className="text-white/70 text-sm mb-4 flex-grow">{study.description}</p>
-                
-                {/* Metrics display */}
-                <div className="grid grid-cols-3 gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {study.metrics.map((metric, metricIndex) => (
-                    <div key={metricIndex} className="text-center p-2 rounded-lg bg-black/30 border border-white/5">
-                      <div className={`text-lg font-bold bg-gradient-to-r ${study.color} bg-clip-text text-transparent`}>
-                        {metric.value}
+              <div className={`card ${hoveredIndex === index ? 'active' : ''}`}>
+                <div className="card-glow" />
+                <div className="card-inner">
+                  <div className="card-front">
+                    <div className="front-head">
+                      <div className="emoji">{study.image}</div>
+                      <div>
+                        <p className="eyebrow">Case Study</p>
+                        <p className="front-title">{study.title}</p>
                       </div>
-                      <div className="text-xs text-white/60">{metric.label}</div>
                     </div>
-                  ))}
-                </div>
-                
-                {/* Hover content */}
-                <div className="space-y-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="text-xs">
-                    <span className="text-white/50 font-medium">Problem:</span>
-                    <p className="text-white/80 mt-1">{study.problem}</p>
+                    <p className="front-summary">{study.problem}</p>
+                    <div className="front-metrics">
+                      {study.metrics.slice(0, 2).map((metric) => (
+                        <div key={metric.label}>
+                          <p className="value">{metric.value}</p>
+                          <p className="label">{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="front-hint">Hover to view solution</p>
                   </div>
-                  <div className="text-xs">
-                    <span className="text-white/50 font-medium">Solution:</span>
-                    <p className="text-white/80 mt-1">{study.solution}</p>
+
+                  <div className="card-back">
+                    <div className="back-head">
+                      <h3>{study.title}</h3>
+                      <p>{study.description}</p>
+                    </div>
+                    <div className="back-metrics">
+                      {study.metrics.map((metric, idx) => (
+                        <div key={metric.label} className={`metric gradient-${idx % 4}`}>
+                          <span>{metric.value}</span>
+                          <p>{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="detail-block">
+                      <p className="detail-label">Solution</p>
+                      <p>{study.solution}</p>
+                    </div>
+                    <div className="detail-block">
+                      <p className="detail-label">Results</p>
+                      <p>{study.results}</p>
+                    </div>
                   </div>
-                  <div className="text-xs">
-                    <span className="text-white/50 font-medium">Results:</span>
-                    <p className={`text-white font-medium mt-1 bg-gradient-to-r ${study.color} bg-clip-text`}>{study.results}</p>
-                  </div>
-                </div>
-                
-                <div className={`mt-4 text-sm font-medium bg-gradient-to-r ${study.color} bg-clip-text text-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300`}>
-                  View Case Study
-                </div>
-                
-                {/* Animated border on hover */}
-                <div className={`absolute inset-0 rounded-2xl border-2 ${study.color} opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none`}>
-                  <div className="absolute inset-0 rounded-2xl animate-border-pulse"></div>
                 </div>
               </div>
             </div>
@@ -211,25 +200,176 @@ const CaseStudiesPreview = () => {
             transform: translate(10px, -15px);
           }
         }
-        
-        @keyframes border-pulse {
-          0% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          50% {
-            transform: scale(1.05);
-            opacity: 0.5;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-        
-        .animate-border-pulse {
-          animation: border-pulse 2s infinite;
-        }
+
+         .case-card {
+           perspective: 1400px;
+         }
+
+         .card {
+           position: relative;
+           width: 100%;
+           height: 320px;
+           border-radius: 28px;
+           overflow: hidden;
+           border: 1px solid rgba(255, 255, 255, 0.08);
+           background: rgba(10, 12, 26, 0.65);
+           transition: transform 400ms ease, box-shadow 400ms ease;
+         }
+
+         .card.active {
+           box-shadow: 0 30px 80px rgba(15, 23, 42, 0.6);
+         }
+
+         .content {
+           position: relative;
+           width: 100%;
+           height: 100%;
+         }
+
+         .card-inner {
+           position: relative;
+           width: 100%;
+           height: 100%;
+           padding: 18px;
+           color: #fff;
+         }
+
+         .card-front {
+           display: flex;
+           flex-direction: column;
+           gap: 16px;
+           height: 100%;
+           transition: opacity 300ms ease;
+         }
+
+         .card.active .card-front {
+           opacity: 0;
+         }
+
+         .front-head {
+           display: flex;
+           gap: 12px;
+           align-items: center;
+         }
+
+         .emoji {
+           font-size: 2rem;
+         }
+
+         .eyebrow {
+           font-size: 0.65rem;
+           letter-spacing: 0.35em;
+           text-transform: uppercase;
+           color: rgba(255, 255, 255, 0.45);
+         }
+
+         .front-title {
+           font-size: 1.1rem;
+           font-weight: 600;
+         }
+
+         .front-summary {
+           background: rgba(255, 255, 255, 0.05);
+           padding: 12px;
+           border-radius: 18px;
+           font-size: 0.9rem;
+           color: rgba(255, 255, 255, 0.75);
+         }
+
+         .front-metrics {
+           display: flex;
+           justify-content: space-between;
+           font-size: 0.8rem;
+           color: rgba(255, 255, 255, 0.6);
+         }
+
+         .front-metrics .value {
+           font-size: 1.2rem;
+           font-weight: 600;
+           color: #fff;
+         }
+
+         .front-hint {
+           font-size: 0.75rem;
+           color: rgba(255, 255, 255, 0.45);
+         }
+
+         .card-back {
+           position: absolute;
+           inset: 18px;
+           padding: 18px;
+           border-radius: 22px;
+           border: 1px solid rgba(255, 255, 255, 0.2);
+           background: rgba(0, 0, 0, 0.85);
+           opacity: 0;
+           transform: translateY(10px);
+           transition: opacity 400ms ease, transform 400ms ease;
+           display: flex;
+           flex-direction: column;
+           gap: 12px;
+         }
+
+         .card.active .card-back {
+           opacity: 1;
+           transform: translateY(0);
+         }
+
+         .back-head h3 {
+           font-size: 1.2rem;
+           margin-bottom: 4px;
+         }
+
+         .back-head p {
+           font-size: 0.9rem;
+           color: rgba(255, 255, 255, 0.75);
+         }
+
+         .back-metrics {
+           display: grid;
+           grid-template-columns: repeat(3, minmax(0, 1fr));
+           gap: 8px;
+         }
+
+         .metric {
+           border-radius: 16px;
+           padding: 10px;
+           text-align: center;
+           background: rgba(255, 255, 255, 0.08);
+         }
+
+         .metric span {
+           font-weight: 600;
+           font-size: 1rem;
+         }
+
+         .detail-block {
+           background: rgba(255, 255, 255, 0.04);
+           border-radius: 16px;
+           padding: 12px;
+           font-size: 0.85rem;
+           color: rgba(255, 255, 255, 0.8);
+         }
+
+         .detail-label {
+           text-transform: uppercase;
+           letter-spacing: 0.3em;
+           font-size: 0.65rem;
+           color: rgba(255, 255, 255, 0.5);
+           margin-bottom: 4px;
+         }
+
+         .gradient-0 {
+           background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(168, 85, 247, 0.25));
+         }
+         .gradient-1 {
+           background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(236, 72, 153, 0.25));
+         }
+         .gradient-2 {
+           background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.25));
+         }
+         .gradient-3 {
+           background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(250, 204, 21, 0.25));
+         }
       `}</style>
     </section>
   )

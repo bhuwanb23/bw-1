@@ -19,7 +19,7 @@ const BlogHero = ({
   }, [])
 
   return (
-    <section className="relative overflow-hidden min-h-[70vh] flex items-center">
+    <section className="relative overflow-hidden min-h-[70vh] flex items-center mb-24">
       <div className="absolute inset-0 -z-10">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.08),transparent_70%)]" />

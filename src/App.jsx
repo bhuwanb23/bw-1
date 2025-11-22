@@ -46,17 +46,17 @@ function App() {
               </main>
             } />
             <Route path="/services" element={
-              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+              <main className="relative w-full px-4 pt-5 sm:px-8 lg:px-12">
                 <ServicesPage />
               </main>
             } />
             <Route path="/products" element={
-              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+              <main className="relative w-full px-4 pt-5 sm:px-8 lg:px-12">
                 <ProductsPage />
               </main>
             } />
             <Route path="/proposal" element={
-              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+              <main className="relative w-full px-4 pt-5 sm:px-8 lg:px-12">
                 <ProposalPage />
               </main>
             } />
