@@ -71,7 +71,7 @@ const SocialProof = () => {
               Hear from businesses that have transformed with our solutions
             </p>
             
-            <div className="relative h-64">
+            <div className="relative min-h-[280px] sm:h-64">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
@@ -83,24 +83,24 @@ const SocialProof = () => {
                         : 'opacity-0 translate-x-full'
                   }`}
                 >
-                  <div className="bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
-                    <div className="flex items-center gap-1 text-yellow-400 mb-4">
+                  <div className="bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-8">
+                    <div className="flex items-center gap-1 text-yellow-400 mb-3 sm:mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
                           <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                         </svg>
                       ))}
                     </div>
                     
-                    <p className="text-xl text-white/90 mb-6 italic">"{testimonial.content}"</p>
+                    <p className="text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-6 italic">"{testimonial.content}"</p>
                     
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-sm sm:text-base font-bold flex-shrink-0">
                         {testimonial.avatar}
                       </div>
-                      <div>
-                        <div className="font-bold text-white">{testimonial.name}</div>
-                        <div className="text-white/70 text-sm">{testimonial.role}</div>
+                      <div className="min-w-0">
+                        <div className="font-bold text-white text-sm sm:text-base">{testimonial.name}</div>
+                        <div className="text-white/70 text-xs sm:text-sm">{testimonial.role}</div>
                         <div className="text-white/50 text-xs">{testimonial.company}</div>
                       </div>
                     </div>
@@ -139,16 +139,16 @@ const SocialProof = () => {
               Metrics that demonstrate our impact on businesses worldwide
             </p>
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {stats.map((stat, index) => (
                 <div 
                   key={index}
-                  className="bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-105"
+                  className="bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-6 transition-all duration-500 hover:scale-105"
                 >
-                  <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
+                  <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-white/70">{stat.label}</div>
+                  <div className="text-white/70 text-sm sm:text-base">{stat.label}</div>
                 </div>
               ))}
             </div>

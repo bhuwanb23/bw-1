@@ -61,7 +61,7 @@ const FeaturedProducts = () => {
         </div>
         
         <div 
-          className="relative h-96 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl"
+          className="relative h-[500px] sm:h-96 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -83,34 +83,34 @@ const FeaturedProducts = () => {
               <div className={`absolute top-10 right-10 w-64 h-64 rounded-full bg-gradient-to-br ${product.color} opacity-20 blur-3xl`}></div>
               <div className={`absolute bottom-10 left-10 w-48 h-48 rounded-full bg-gradient-to-br ${product.color} opacity-15 blur-3xl`}></div>
               
-              <div className="relative w-full max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 items-center">
                 <div className="order-2 lg:order-1">
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
                     {product.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex} 
-                        className="px-3 py-1 rounded-full text-xs font-medium border border-white/20 bg-black/30 text-white/80"
+                        className="px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium border border-white/20 bg-black/30 text-white/80"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                   
-                  <h3 className="text-4xl font-bold text-white mb-4">{product.title}</h3>
-                  <p className="text-xl text-white/80 mb-8 max-w-lg">{product.description}</p>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">{product.title}</h3>
+                  <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg">{product.description}</p>
                   
-                  <div className="flex flex-wrap gap-4">
-                    <button className={`px-6 py-3 rounded-full bg-gradient-to-r ${product.color} text-white font-bold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg`}>
+                  <div className="flex flex-wrap gap-3 sm:gap-4">
+                    <button className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r ${product.color} text-white text-sm sm:text-base font-bold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg`}>
                       View Details
                     </button>
-                    <button className="px-6 py-3 rounded-full border border-white/20 bg-black/30 text-white font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                    <button className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-full border border-white/20 bg-black/30 text-white text-sm sm:text-base font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                       Request Demo
                     </button>
                   </div>
                 </div>
                 
                 <div className="order-1 lg:order-2 flex justify-center">
-                  <div className={`w-64 h-64 rounded-3xl bg-gradient-to-br ${product.color} flex items-center justify-center text-8xl shadow-2xl`}>
+                  <div className={`w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl bg-gradient-to-br ${product.color} flex items-center justify-center text-6xl sm:text-7xl md:text-8xl shadow-2xl`}>
                     {product.image}
                   </div>
                 </div>

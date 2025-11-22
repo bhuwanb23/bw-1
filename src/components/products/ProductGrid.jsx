@@ -75,15 +75,26 @@ const ProductGrid = () => {
   return (
     <section className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+          <span>Products</span>
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          View Our <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Products</span>
+        </h2>
+        <p className="text-lg text-white/70 mb-12">
+          Explore our innovative solutions
+        </p>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <div
               key={product.id}
-              className={`group relative rounded-xl overflow-hidden border cursor-pointer transition-all duration-300 ${
-                hoveredProduct === product.id
+              className={`group relative rounded-xl overflow-hidden border cursor-pointer transition-all duration-300 ${hoveredProduct === product.id
                   ? 'border-white/30 bg-gradient-to-br from-black/30 to-black/20 backdrop-blur-xl'
                   : 'border-white/10 bg-black/20 hover:border-white/20'
-              }`}
+                }`}
               style={{
                 boxShadow: hoveredProduct === product.id ? `0 0 20px -8px rgba(56, 189, 248, 0.3)` : 'none'
               }}
@@ -102,10 +113,10 @@ const ProductGrid = () => {
                     <span className="text-white font-bold text-sm">{product.rating}</span>
                   </div>
                 </div>
-                
+
                 <h3 className="text-lg font-bold text-white mb-2">{product.title}</h3>
                 <p className="text-white/70 text-xs mb-4">{product.description}</p>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     <span className="px-2 py-1 rounded text-xs font-medium bg-black/50 text-white/80 border border-white/10">
@@ -115,13 +126,13 @@ const ProductGrid = () => {
                   <div className="text-xs text-white/60">{product.downloads}</div>
                 </div>
               </div>
-              
+
               {/* Animated border on hover */}
               <div className={`absolute inset-0 rounded-xl border-2 ${product.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`}></div>
             </div>
           ))}
         </div>
-        
+
         <div className="text-center mt-10">
           <button className="px-5 py-2.5 rounded-full border border-white/20 bg-black/30 text-white text-sm font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-sm flex items-center gap-2 mx-auto group">
             View All Products

@@ -5,13 +5,15 @@ import BlogHero from '../components/blogs/BlogHero'
 const BlogPage = () => {
   const [activeTab, setActiveTab] = useState('blogs')
   const [articles, setArticles] = useState(initialArticles)
-  const [selectedBlogId, setSelectedBlogId] = useState(initialArticles[0]?.id ?? null)
+  const [selectedBlogId, setSelectedBlogId] = useState(null)
   const [blogSearch, setBlogSearch] = useState('')
   const [blogForm, setBlogForm] = useState({
     title: '',
     category: blogCategories[1] ?? 'AI/ML',
     content: ''
   })
+  const [showBlogForm, setShowBlogForm] = useState(false)
+  const [showBlogDetail, setShowBlogDetail] = useState(false)
 
   const [questions, setQuestions] = useState(initialQuestions)
   const [selectedQuestionId, setSelectedQuestionId] = useState(initialQuestions[0]?.id ?? null)
@@ -48,6 +50,7 @@ const BlogPage = () => {
     setArticles([newArticle, ...articles])
     setSelectedBlogId(newArticle.id)
     setBlogForm({ ...blogForm, title: '', content: '' })
+    setShowBlogForm(false)
   }
 
   const handleSubmitAnswer = (e) => {
@@ -97,13 +100,22 @@ const BlogPage = () => {
             articles={filteredArticles}
             selectedBlog={selectedBlog}
             selectedBlogId={selectedBlog?.id}
-            onSelectBlog={setSelectedBlogId}
+            onSelectBlog={(id) => {
+              setSelectedBlogId(id)
+              if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+                setShowBlogDetail(true)
+              }
+            }}
             searchValue={blogSearch}
             onSearchChange={setBlogSearch}
             blogForm={blogForm}
             onBlogFormChange={setBlogForm}
             onPublishBlog={handlePublishBlog}
             categories={blogCategories}
+            showBlogForm={showBlogForm}
+            setShowBlogForm={setShowBlogForm}
+            showBlogDetail={showBlogDetail}
+            setShowBlogDetail={setShowBlogDetail}
           />
         ) : (
           <QuestionSplitView
@@ -130,51 +142,173 @@ const BlogSplitView = ({
   blogForm,
   onBlogFormChange,
   onPublishBlog,
-  categories
+  categories,
+  showBlogForm,
+  setShowBlogForm,
+  showBlogDetail,
+  setShowBlogDetail
 }) => {
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-      <div className="space-y-4 rounded-3xl border border-white/10 bg-transparent p-4 backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-40 pointer-events-none" />
-        <div className="relative rounded-2xl border border-white/10 bg-transparent p-3 backdrop-blur-lg">
-          <input
-            value={searchValue}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search articles…"
-            className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm placeholder-white/40 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
+    <>
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div className="space-y-4 rounded-3xl border border-white/10 bg-transparent p-4 backdrop-blur-xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-40 pointer-events-none" />
+          <div className="relative flex gap-3">
+            <div className="flex-1 rounded-2xl border border-white/10 bg-transparent p-3 backdrop-blur-lg">
+              <input
+                value={searchValue}
+                onChange={(e) => onSearchChange(e.target.value)}
+                placeholder="Search articles…"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm placeholder-white/40 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+            <button
+              onClick={() => setShowBlogForm(true)}
+              className="lg:hidden px-4 py-3 rounded-xl border border-white/10 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-semibold whitespace-nowrap"
+            >
+              Write Blog
+            </button>
+          </div>
+          <div className="relative rounded-2xl border border-white/10 bg-transparent max-h-[70vh] overflow-y-auto backdrop-blur-lg">
+            {articles.map((article) => {
+              const active = article.id === selectedBlogId
+              return (
+                <button
+                  key={article.id}
+                  onClick={() => onSelectBlog(article.id)}
+                  className={`w-full text-left border-b border-white/5 px-4 py-4 transition-colors last:border-none ${
+                    active ? 'bg-white/10' : 'hover:bg-white/5'
+                  }`}
+                >
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">{article.category}</p>
+                  <h3 className="text-base font-semibold text-white">{article.title}</h3>
+                  <p className="text-sm text-white/60 line-clamp-2">{article.excerpt}</p>
+                  <p className="mt-1 text-[11px] text-white/40">
+                    {article.date} • {article.readTime}
+                  </p>
+                </button>
+              )
+            })}
+            {articles.length === 0 && <p className="p-6 text-center text-white/60">No posts yet.</p>}
+          </div>
         </div>
-        <div className="relative rounded-2xl border border-white/10 bg-transparent max-h-[70vh] overflow-y-auto backdrop-blur-lg">
-          {articles.map((article) => {
-            const active = article.id === selectedBlogId
-            return (
-              <button
-                key={article.id}
-                onClick={() => onSelectBlog(article.id)}
-                className={`w-full text-left border-b border-white/5 px-4 py-4 transition-colors last:border-none ${
-                  active ? 'bg-white/10' : 'hover:bg-white/5'
-                }`}
-              >
-                <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">{article.category}</p>
-                <h3 className="text-base font-semibold text-white">{article.title}</h3>
-                <p className="text-sm text-white/60 line-clamp-2">{article.excerpt}</p>
-                <p className="mt-1 text-[11px] text-white/40">
-                  {article.date} • {article.readTime}
+
+        <div className="hidden lg:block space-y-6">
+          {selectedBlog ? (
+            <article className="rounded-3xl border border-white/10 bg-transparent p-6 space-y-4 backdrop-blur-xl shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">{selectedBlog.category}</p>
+                  <h2 className="text-2xl font-semibold text-white">{selectedBlog.title}</h2>
+                </div>
+                <p className="text-sm text-white/60 text-right">
+                  {selectedBlog.date}
+                  <br />
+                  {selectedBlog.readTime}
                 </p>
+              </div>
+              <div className="space-y-3 text-white/80 leading-relaxed">
+                {selectedBlog.content.split('\n').map((paragraph, idx) => (
+                  <p key={idx}>{paragraph.trim()}</p>
+                ))}
+              </div>
+            </article>
+          ) : (
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center text-white/60">Select a blog</div>
+          )}
+
+          <div className="rounded-3xl border border-white/10 bg-transparent p-6 space-y-4 backdrop-blur-xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">Write</p>
+                <h3 className="text-xl font-semibold text-white">Publish a new blog</h3>
+              </div>
+              <button
+                onClick={() => setShowBlogForm(true)}
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-semibold transition-transform hover:scale-105"
+              >
+                New Post
               </button>
-            )
-          })}
-          {articles.length === 0 && <p className="p-6 text-center text-white/60">No posts yet.</p>}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="space-y-6">
-        {selectedBlog ? (
-          <article className="rounded-3xl border border-white/10 bg-transparent p-6 space-y-4 backdrop-blur-xl shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
+      {/* Mobile/Web Blog Form Modal */}
+      {showBlogForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setShowBlogForm(false)}>
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold text-white">Publish a new blog</h3>
+              <button onClick={() => setShowBlogForm(false)} className="text-white/60 hover:text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <form className="space-y-4" onSubmit={onPublishBlog}>
+              <input
+                type="text"
+                value={blogForm.title}
+                onChange={(e) => onBlogFormChange({ ...blogForm, title: e.target.value })}
+                placeholder="Blog title"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                required
+              />
+              <select
+                value={blogForm.category}
+                onChange={(e) => onBlogFormChange({ ...blogForm, category: e.target.value })}
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <textarea
+                rows={8}
+                value={blogForm.content}
+                onChange={(e) => onBlogFormChange({ ...blogForm, content: e.target.value })}
+                placeholder="Write your story..."
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                required
+              ></textarea>
+              <div className="flex justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowBlogForm(false)}
+                  className="px-6 py-2 rounded-full border border-white/20 bg-black/30 text-white text-sm font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-2 text-sm font-semibold text-white transition-transform hover:scale-105"
+                >
+                  Publish blog
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Blog Detail Modal */}
+      {showBlogDetail && selectedBlog && (
+        <div className="lg:hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setShowBlogDetail(false)}>
+          <div className="relative w-full max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold text-white">{selectedBlog.title}</h2>
+              <button onClick={() => setShowBlogDetail(false)} className="text-white/60 hover:text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">{selectedBlog.category}</p>
-                <h2 className="text-2xl font-semibold text-white">{selectedBlog.title}</h2>
               </div>
               <p className="text-sm text-white/60 text-right">
                 {selectedBlog.date}
@@ -187,56 +321,10 @@ const BlogSplitView = ({
                 <p key={idx}>{paragraph.trim()}</p>
               ))}
             </div>
-          </article>
-        ) : (
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center text-white/60">Select a blog</div>
-        )}
-
-        <div className="rounded-3xl border border-white/10 bg-transparent p-6 space-y-4 backdrop-blur-xl">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">Write</p>
-            <h3 className="text-xl font-semibold text-white">Publish a new blog</h3>
           </div>
-          <form className="space-y-4" onSubmit={onPublishBlog}>
-            <input
-              type="text"
-              value={blogForm.title}
-              onChange={(e) => onBlogFormChange({ ...blogForm, title: e.target.value })}
-              placeholder="Blog title"
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              required
-            />
-            <select
-              value={blogForm.category}
-              onChange={(e) => onBlogFormChange({ ...blogForm, category: e.target.value })}
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <textarea
-              rows={6}
-              value={blogForm.content}
-              onChange={(e) => onBlogFormChange({ ...blogForm, content: e.target.value })}
-              placeholder="Write your story..."
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              required
-            ></textarea>
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-2 text-sm font-semibold text-white transition-transform hover:scale-105"
-              >
-                Publish blog
-              </button>
-            </div>
-          </form>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 

@@ -13,7 +13,7 @@ const ProductsPage = () => {
         <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ProductsHero />
           <FeaturedProducts />
-          <ProductFilterBar />
+          {/* <ProductFilterBar /> */}
           <ProductGrid />
           <SocialProof />
           <DeveloperDocsCTA />

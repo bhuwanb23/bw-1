@@ -28,8 +28,8 @@ const task = await client.tasks.create({
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5 to-transparent" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl p-5 sm:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div>
               <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -44,14 +44,14 @@ const task = await client.tasks.create({
                 Comprehensive documentation, SDKs, and tools to integrate our products into your applications.
               </p>
               
-              <div className="flex flex-wrap gap-4">
-                <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium hover:scale-[1.02] transition-transform duration-300">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
+                <button className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-white text-sm sm:text-base font-medium hover:scale-[1.02] transition-transform duration-300">
                   View Documentation
                 </button>
-                <button className="px-6 py-3 rounded-lg border border-white/20 bg-black/30 text-white font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                <button className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg border border-white/20 bg-black/30 text-white text-sm sm:text-base font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                   API Reference
                 </button>
-                <button className="px-6 py-3 rounded-lg border border-white/20 bg-black/30 text-white font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                <button className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg border border-white/20 bg-black/30 text-white text-sm sm:text-base font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                   SDK Downloads
                 </button>
               </div>
@@ -65,8 +65,8 @@ const task = await client.tasks.create({
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   <div className="text-xs text-white/60 ml-2">integration-example.js</div>
                 </div>
-                <div className="p-4 bg-gradient-to-br from-black/60 to-black/40">
-                  <pre className="text-sm text-white/90 overflow-x-auto">
+                <div className="p-3 sm:p-4 bg-gradient-to-br from-black/60 to-black/40">
+                  <pre className="text-xs sm:text-sm text-white/90 overflow-x-auto">
                     <code>{codeSnippet}</code>
                   </pre>
                 </div>
@@ -95,10 +95,10 @@ const task = await client.tasks.create({
             </div>
           </div>
           
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <h3 className="text-xl font-bold text-white mb-6">Contribute to Our Open Source Projects</h3>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex-1 min-w-[200px] p-4 rounded-xl border border-white/10 bg-black/30">
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Contribute to Our Open Source Projects</h3>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <div className="flex-1 min-w-0 sm:min-w-[200px] p-4 rounded-xl border border-white/10 bg-black/30">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -97,7 +97,7 @@ const ProposalForm = () => {
           </p>
         </div>
         
-        <div className="bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12">
+        <div className="bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12">
           {isSubmitted ? (
             <div className="text-center py-12">
               <div className="w-20 h-20 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-6">
@@ -117,8 +117,8 @@ const ProposalForm = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 md:space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-white/80 mb-2">Full Name *</label>
                   <input
@@ -128,7 +128,7 @@ const ProposalForm = () => {
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-white/10 bg-black/20 text-white text-sm sm:text-base placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -142,7 +142,7 @@ const ProposalForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-white/10 bg-black/20 text-white text-sm sm:text-base placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -155,7 +155,7 @@ const ProposalForm = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-white/10 bg-black/20 text-white text-sm sm:text-base placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="Your company name"
                   />
                 </div>
@@ -226,7 +226,7 @@ const ProposalForm = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-white/10 bg-black/20 text-white text-sm sm:text-base placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                   placeholder="Describe your project requirements in detail..."
                 />
               </div>
@@ -234,15 +234,15 @@ const ProposalForm = () => {
               <div>
                 <label className="block text-sm font-medium text-white/80 mb-2">Attachments</label>
                 <div className="flex items-center justify-center w-full">
-                  <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-white/20 border-dashed rounded-xl cursor-pointer bg-black/10 hover:bg-black/20 transition-all duration-300">
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                      <svg className="w-8 h-8 text-white/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <label className="flex flex-col items-center justify-center w-full h-24 sm:h-32 border-2 border-white/20 border-dashed rounded-xl cursor-pointer bg-black/10 hover:bg-black/20 transition-all duration-300">
+                    <div className="flex flex-col items-center justify-center pt-3 pb-4 sm:pt-5 sm:pb-6">
+                      <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                       </svg>
-                      <p className="text-sm text-white/50">
+                      <p className="text-xs sm:text-sm text-white/50 text-center px-2">
                         <span className="font-semibold text-blue-400">Click to upload</span> or drag and drop
                       </p>
-                      <p className="text-xs text-white/40">PDF, DOC, JPG, PNG (MAX. 10MB)</p>
+                      <p className="text-[10px] sm:text-xs text-white/40 text-center px-2">PDF, DOC, JPG, PNG (MAX. 10MB)</p>
                     </div>
                     <input 
                       type="file" 
@@ -297,7 +297,7 @@ const ProposalForm = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-3 sm:py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm sm:text-base font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <>
