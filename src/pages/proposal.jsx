@@ -5,10 +5,19 @@ import MeetingScheduler from '../components/proposal/MeetingScheduler.jsx'
 import ProposalFAQ from '../components/proposal/ProposalFAQ.jsx'
 import SocialProof from '../components/proposal/SocialProof.jsx'
 import ProposalCTA from '../components/proposal/ProposalCTA.jsx'
+import SEO from '../components/SEO.jsx'
+import { pageSEO } from '../data/seoData.js'
 
 const ProposalPage = () => {
   return (
-    <div className="relative overflow-hidden bg-transparent min-h-screen">
+    <>
+      <SEO
+        title={pageSEO.proposal.title}
+        description={pageSEO.proposal.description}
+        keywords={pageSEO.proposal.keywords}
+        url={pageSEO.proposal.path}
+      />
+      <div className="relative overflow-hidden bg-transparent min-h-screen">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating particles */}
@@ -70,6 +79,7 @@ const ProposalPage = () => {
         }
       `}</style>
     </div>
+    </>
   )
 }
 

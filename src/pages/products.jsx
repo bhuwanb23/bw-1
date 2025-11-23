@@ -5,10 +5,19 @@ import ProductGrid from '../components/products/ProductGrid.jsx'
 import SocialProof from '../components/products/SocialProof.jsx'
 import DeveloperDocsCTA from '../components/products/DeveloperDocsCTA.jsx'
 import ProductsFooterCTA from '../components/products/ProductsFooterCTA.jsx'
+import SEO from '../components/SEO.jsx'
+import { pageSEO } from '../data/seoData.js'
 
 const ProductsPage = () => {
   return (
-    <div className="relative overflow-hidden bg-transparent">
+    <>
+      <SEO
+        title={pageSEO.products.title}
+        description={pageSEO.products.description}
+        keywords={pageSEO.products.keywords}
+        url={pageSEO.products.path}
+      />
+      <div className="relative overflow-hidden bg-transparent">
       <div className="relative z-20">
         <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ProductsHero />
@@ -21,6 +30,7 @@ const ProductsPage = () => {
         </main>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { blogArticles as initialArticles, blogCategories, communityQuestions as initialQuestions } from '../data/blogData.js'
 import BlogHero from '../components/blogs/BlogHero'
+import SEO from '../components/SEO.jsx'
+import { pageSEO } from '../data/seoData.js'
 
 const BlogPage = () => {
   const [activeTab, setActiveTab] = useState('blogs')
@@ -79,8 +81,15 @@ const BlogPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-white">
-      <BlogHero
+    <>
+      <SEO
+        title={pageSEO.blog.title}
+        description={pageSEO.blog.description}
+        keywords={pageSEO.blog.keywords}
+        url={pageSEO.blog.path}
+      />
+      <div className="min-h-screen bg-transparent text-white">
+        <BlogHero
         stats={[
           { label: 'Active Readers', value: '72K+' },
           { label: 'Published Posts', value: `${articles.length}` },
@@ -129,6 +138,7 @@ const BlogPage = () => {
         )}
       </div>
     </div>
+    </>
   )
 }
 

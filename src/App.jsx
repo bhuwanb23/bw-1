@@ -16,11 +16,20 @@ import ProductsPage from './pages/products.jsx'
 import ProposalPage from './pages/proposal.jsx'
 import BlogPage from './pages/blog.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
+import SEO from './components/SEO.jsx'
+import { pageSEO, organizationSchema, websiteSchema } from './data/seoData.js'
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      {/* Global Structured Data */}
+      <SEO
+        structuredData={organizationSchema}
+      />
+      <SEO
+        structuredData={websiteSchema}
+      />
       <div className="relative overflow-hidden bg-black-900">
         <SplineBackground />
         <div className="pointer-events-none fixed inset-0 z-10">
@@ -33,8 +42,15 @@ function App() {
         <div className="relative z-20">
           <Routes>
             <Route path="/" element={
-              <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
-                <Hero />
+              <>
+                <SEO
+                  title={pageSEO.home.title}
+                  description={pageSEO.home.description}
+                  keywords={pageSEO.home.keywords}
+                  url={pageSEO.home.path}
+                />
+                <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
+                  <Hero />
                 <FeaturesSection />
                 <ServicesOverview />
                 <ProductsShowcase />
@@ -43,7 +59,8 @@ function App() {
                 <Testimonials />
                 <TechStackSlider />
                 <CallToActionBanner />
-              </main>
+                </main>
+              </>
             } />
             <Route path="/services" element={
               <main className="relative w-full px-4 pt-5 sm:px-8 lg:px-12">
