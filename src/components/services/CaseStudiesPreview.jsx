@@ -1,375 +1,285 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const caseStudies = [
   {
     id: 1,
-    title: 'FinTech Platform Transformation',
-    description: 'Modernized legacy banking system with real-time processing capabilities.',
-    problem: 'Legacy infrastructure causing performance bottlenecks and scalability issues.',
-    solution: 'Implemented microservices architecture with cloud-native technologies.',
-    results: '500% performance improvement and 99.99% uptime.',
+    title: 'Enterprise SaaS Platform',
+    description: 'Custom SaaS solution for enterprise resource planning and workflow automation.',
+    problem: 'Fragmented systems causing inefficiencies and data silos across departments.',
+    solution: 'Unified cloud-based platform with real-time analytics and mobile accessibility.',
+    results: '40% increase in productivity and 60% reduction in operational costs.',
     image: '💼',
     color: 'from-blue-500 to-cyan-500',
     metrics: [
-      { label: 'Performance', value: '+500%' },
-      { label: 'Uptime', value: '99.99%' },
-      { label: 'Costs', value: '-30%' }
-    ]
+      { label: 'Productivity', value: '+40%' },
+      { label: 'Costs', value: '-60%' },
+      { label: 'Uptime', value: '99.95%' }
+    ],
+    category: 'SaaS',
+    timeline: '6 months',
+    tech: ['React', 'Node.js', 'AWS', 'MongoDB']
   },
   {
     id: 2,
-    title: 'AI-Powered Customer Service',
-    description: 'Developed intelligent chatbot solution for enterprise customer support.',
-    problem: 'High volume of customer inquiries overwhelming support team.',
-    solution: 'Created NLP-powered chatbot with machine learning capabilities.',
-    results: 'Reduced support tickets by 70% and improved response time by 85%.',
+    title: 'AI-Powered Analytics Dashboard',
+    description: 'Intelligent analytics platform for real-time business insights and predictions.',
+    problem: 'Data overload without actionable insights for decision-making.',
+    solution: 'Created ML-powered dashboard with predictive analytics and automated reporting.',
+    results: 'Reduced decision-making time by 75% and improved forecast accuracy by 85%.',
     image: '🤖',
     color: 'from-purple-500 to-violet-500',
     metrics: [
-      { label: 'Response Time', value: '-85%' },
-      { label: 'Support Tickets', value: '-70%' },
-      { label: 'Satisfaction', value: '+40%' }
-    ]
+      { label: 'Decision Time', value: '-75%' },
+      { label: 'Forecast Accuracy', value: '+85%' },
+      { label: 'ROI', value: '+120%' }
+    ],
+    category: 'AI/ML',
+    timeline: '8 months',
+    tech: ['Python', 'TensorFlow', 'React', 'D3.js']
   },
   {
     id: 3,
-    title: 'E-Commerce Optimization',
-    description: 'Enhanced online retail platform for improved user experience.',
-    problem: 'Declining conversion rates due to poor user experience.',
-    solution: 'Redesigned UI/UX with personalized recommendation engine.',
-    results: '40% increase in conversions and 60% reduction in bounce rate.',
+    title: 'E-Commerce & Mobile Solution',
+    description: 'Omnichannel retail platform with mobile app and payment integration.',
+    problem: 'Declining sales due to outdated e-commerce platform and poor mobile experience.',
+    solution: 'Redesigned responsive web platform with native mobile app and personalized recommendations.',
+    results: '65% increase in conversions and 50% growth in mobile engagement.',
     image: '🛒',
     color: 'from-emerald-500 to-teal-500',
     metrics: [
-      { label: 'Conversions', value: '+40%' },
-      { label: 'Bounce Rate', value: '-60%' },
-      { label: 'Revenue', value: '+25%' }
-    ]
+      { label: 'Conversions', value: '+65%' },
+      { label: 'Mobile Engagement', value: '+50%' },
+      { label: 'Revenue', value: '+45%' }
+    ],
+    category: 'E-Commerce',
+    timeline: '5 months',
+    tech: ['React Native', 'Next.js', 'Stripe', 'Firebase']
   },
   {
     id: 4,
-    title: 'Healthcare Data Analytics',
-    description: 'Built secure platform for medical data analysis and insights.',
-    problem: 'Fragmented patient data across multiple systems.',
-    solution: 'Created unified data platform with advanced analytics dashboard.',
-    results: 'Improved patient outcomes and reduced administrative costs by 30%.',
+    title: 'Healthcare Management System',
+    description: 'Secure platform for patient data management and telemedicine services.',
+    problem: 'Inefficient patient management and lack of remote healthcare capabilities.',
+    solution: 'Created HIPAA-compliant system with telemedicine integration and AI diagnostics.',
+    results: 'Improved patient outcomes by 30% and reduced administrative workload by 50%.',
     image: '🏥',
     color: 'from-amber-500 to-orange-500',
     metrics: [
-      { label: 'Patient Outcomes', value: '+20%' },
-      { label: 'Admin Costs', value: '-30%' },
-      { label: 'Data Accuracy', value: '+95%' }
-    ]
+      { label: 'Patient Outcomes', value: '+30%' },
+      { label: 'Admin Workload', value: '-50%' },
+      { label: 'Data Security', value: '100%' }
+    ],
+    category: 'Healthcare',
+    timeline: '9 months',
+    tech: ['Angular', '.NET Core', 'Azure', 'HIPAA Compliant']
   }
 ]
 
 const CaseStudiesPreview = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null)
-  const [visibleStudies, setVisibleStudies] = useState([])
+  const [activeStudy, setActiveStudy] = useState(caseStudies[0])
+  const [animationClass, setAnimationClass] = useState('')
+  const [particles, setParticles] = useState([])
 
-  useState(() => {
-    const timers = caseStudies.map((_, index) => {
-      return setTimeout(() => {
-        setVisibleStudies(prev => [...prev, index])
-      }, index * 150)
-    })
-    
-    return () => timers.forEach(timer => clearTimeout(timer))
+  useEffect(() => {
+    // Generate floating particles
+    const newParticles = [...Array(30)].map((_, i) => ({
+      id: i,
+      size: Math.random() * 10 + 5,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      animationDelay: `${Math.random() * 5}s`,
+      animationDuration: `${15 + Math.random() * 10}s`
+    }))
+    setParticles(newParticles)
   }, [])
 
+  const handleStudyChange = (study) => {
+    setAnimationClass('opacity-0 scale-95')
+    setTimeout(() => {
+      setActiveStudy(study)
+      setAnimationClass('opacity-100 scale-100')
+    }, 150)
+  }
+
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent" />
-      
-      {/* Background particles */}
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle) => (
           <div
-            key={i}
+            key={particle.id}
             className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"
             style={{
-              width: `${Math.random() * 12 + 4}px`,
-              height: `${Math.random() * 12 + 4}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `float ${25 + Math.random() * 15}s infinite ease-in-out`,
-              animationDelay: `${Math.random() * 5}s`
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              top: particle.top,
+              left: particle.left,
+              animation: `float ${particle.animationDuration} infinite ease-in-out`,
+              animationDelay: particle.animationDelay
             }}
           />
         ))}
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent" />
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-purple-400 animate-pulse" />
             <span>Case Studies</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Success <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Stories</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Innovation <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Showcase</span>
           </h2>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Real-world examples of our successful technology implementations
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            Real-world transformations powered by cutting-edge technology and strategic thinking
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {caseStudies.map((study, index) => (
-            <div
-              key={study.id}
-              className={`case-card group relative transition-all duration-500 ${
-                visibleStudies.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className={`card ${hoveredIndex === index ? 'active' : ''}`}>
-                <div className="card-glow" />
-                <div className="card-inner">
-                  <div className="card-front">
-                    <div className="front-head">
-                      <div className="emoji">{study.image}</div>
-                      <div>
-                        <p className="eyebrow">Case Study</p>
-                        <p className="front-title">{study.title}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Case Study Selector */}
+          <div className="lg:col-span-1 space-y-4">
+            {caseStudies.map((study) => (
+              <div
+                key={study.id}
+                onClick={() => handleStudyChange(study)}
+                className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 ${
+                  activeStudy.id === study.id
+                    ? `border-white/30 bg-gradient-to-br ${study.color}/10 backdrop-blur-xl scale-[1.02] shadow-lg`
+                    : 'border-white/10 bg-black/20 hover:border-white/20 hover:bg-black/30'
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${study.color} flex items-center justify-center text-xl`}>
+                    {study.image}
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-white/10 text-white/80">
+                      {study.category}
+                    </span>
+                    <h3 className="font-bold text-white mt-2">{study.title}</h3>
+                    <p className="text-sm text-white/70 mt-1 line-clamp-2">{study.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Active Case Study Detail */}
+          <div className="lg:col-span-2">
+            <div className={`rounded-3xl border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-2xl p-8 transition-all duration-300 ${animationClass}`}>
+              <div className="flex flex-col md:flex-row md:items-start gap-8">
+                <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-3xl">
+                  {activeStudy.image}
+                </div>
+                
+                <div className="flex-grow">
+                  <div className="flex flex-wrap items-center gap-4 mb-6">
+                    <h3 className="text-3xl font-bold text-white">{activeStudy.title}</h3>
+                    <span className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-sm">
+                      {activeStudy.timeline}
+                    </span>
+                  </div>
+                  
+                  <p className="text-white/80 mb-8">{activeStudy.description}</p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                        The Challenge
+                      </h4>
+                      <p className="text-white/70 bg-red-500/5 p-4 rounded-xl border border-red-500/10">
+                        {activeStudy.problem}
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                        Our Solution
+                      </h4>
+                      <p className="text-white/70 bg-green-500/5 p-4 rounded-xl border border-green-500/10">
+                        {activeStudy.solution}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-8">
+                    <h4 className="text-lg font-bold text-white mb-4">Key Results</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      {activeStudy.metrics.map((metric, index) => (
+                        <div key={index} className="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+                          <p className="text-2xl font-bold text-white">{metric.value}</p>
+                          <p className="text-sm text-white/70 mt-1">{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-4 items-center justify-between">
+                    <div>
+                      <h4 className="text-sm font-medium text-white/60 mb-2">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {activeStudy.tech.map((tech, index) => (
+                          <span key={index} className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-xs">
+                            {tech}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <p className="front-summary">{study.problem}</p>
-                    <div className="front-metrics">
-                      {study.metrics.slice(0, 2).map((metric) => (
-                        <div key={metric.label}>
-                          <p className="value">{metric.value}</p>
-                          <p className="label">{metric.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="front-hint">Hover to view solution</p>
-                  </div>
-
-                  <div className="card-back">
-                    <div className="back-head">
-                      <h3>{study.title}</h3>
-                      <p>{study.description}</p>
-                    </div>
-                    <div className="back-metrics">
-                      {study.metrics.map((metric, idx) => (
-                        <div key={metric.label} className={`metric gradient-${idx % 4}`}>
-                          <span>{metric.value}</span>
-                          <p>{metric.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="detail-block">
-                      <p className="detail-label">Solution</p>
-                      <p>{study.solution}</p>
-                    </div>
-                    <div className="detail-block">
-                      <p className="detail-label">Results</p>
-                      <p>{study.results}</p>
-                    </div>
+                    
+                    <button className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl flex items-center gap-2">
+                      View Full Case Study
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
         
-        <div className="text-center mt-12">
-          <button className="px-6 py-3 rounded-full border border-white/20 bg-black/30 text-white font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-sm flex items-center gap-2 mx-auto group">
-            View All Case Studies
-            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+        {/* Stats Bar */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-6 text-center backdrop-blur-sm">
+            <p className="text-3xl font-bold text-white">200+</p>
+            <p className="text-white/70 mt-1">Projects Completed</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-6 text-center backdrop-blur-sm">
+            <p className="text-3xl font-bold text-white">98%</p>
+            <p className="text-white/70 mt-1">Client Satisfaction</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-6 text-center backdrop-blur-sm">
+            <p className="text-3xl font-bold text-white">50%</p>
+            <p className="text-white/70 mt-1">Average Cost Savings</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/30 p-6 text-center backdrop-blur-sm">
+            <p className="text-3xl font-bold text-white">24/7</p>
+            <p className="text-white/70 mt-1">Support Coverage</p>
+          </div>
         </div>
       </div>
       
       <style jsx>{`
         @keyframes float {
           0%, 100% {
-            transform: translate(0, 0);
+            transform: translate(0, 0) scale(1);
           }
           25% {
-            transform: translate(15px, 15px);
+            transform: translate(10px, 10px) scale(1.1);
           }
           50% {
-            transform: translate(-10px, 10px);
+            transform: translate(-10px, 15px) scale(0.9);
           }
           75% {
-            transform: translate(10px, -15px);
+            transform: translate(15px, -10px) scale(1.2);
           }
         }
-
-         .case-card {
-           perspective: 1400px;
-         }
-
-         .card {
-           position: relative;
-           width: 100%;
-           height: 320px;
-           border-radius: 28px;
-           overflow: hidden;
-           border: 1px solid rgba(255, 255, 255, 0.08);
-           background: rgba(10, 12, 26, 0.65);
-           transition: transform 400ms ease, box-shadow 400ms ease;
-         }
-
-         .card.active {
-           box-shadow: 0 30px 80px rgba(15, 23, 42, 0.6);
-         }
-
-         .content {
-           position: relative;
-           width: 100%;
-           height: 100%;
-         }
-
-         .card-inner {
-           position: relative;
-           width: 100%;
-           height: 100%;
-           padding: 18px;
-           color: #fff;
-         }
-
-         .card-front {
-           display: flex;
-           flex-direction: column;
-           gap: 16px;
-           height: 100%;
-           transition: opacity 300ms ease;
-         }
-
-         .card.active .card-front {
-           opacity: 0;
-         }
-
-         .front-head {
-           display: flex;
-           gap: 12px;
-           align-items: center;
-         }
-
-         .emoji {
-           font-size: 2rem;
-         }
-
-         .eyebrow {
-           font-size: 0.65rem;
-           letter-spacing: 0.35em;
-           text-transform: uppercase;
-           color: rgba(255, 255, 255, 0.45);
-         }
-
-         .front-title {
-           font-size: 1.1rem;
-           font-weight: 600;
-         }
-
-         .front-summary {
-           background: rgba(255, 255, 255, 0.05);
-           padding: 12px;
-           border-radius: 18px;
-           font-size: 0.9rem;
-           color: rgba(255, 255, 255, 0.75);
-         }
-
-         .front-metrics {
-           display: flex;
-           justify-content: space-between;
-           font-size: 0.8rem;
-           color: rgba(255, 255, 255, 0.6);
-         }
-
-         .front-metrics .value {
-           font-size: 1.2rem;
-           font-weight: 600;
-           color: #fff;
-         }
-
-         .front-hint {
-           font-size: 0.75rem;
-           color: rgba(255, 255, 255, 0.45);
-         }
-
-         .card-back {
-           position: absolute;
-           inset: 18px;
-           padding: 18px;
-           border-radius: 22px;
-           border: 1px solid rgba(255, 255, 255, 0.2);
-           background: rgba(0, 0, 0, 0.85);
-           opacity: 0;
-           transform: translateY(10px);
-           transition: opacity 400ms ease, transform 400ms ease;
-           display: flex;
-           flex-direction: column;
-           gap: 12px;
-         }
-
-         .card.active .card-back {
-           opacity: 1;
-           transform: translateY(0);
-         }
-
-         .back-head h3 {
-           font-size: 1.2rem;
-           margin-bottom: 4px;
-         }
-
-         .back-head p {
-           font-size: 0.9rem;
-           color: rgba(255, 255, 255, 0.75);
-         }
-
-         .back-metrics {
-           display: grid;
-           grid-template-columns: repeat(3, minmax(0, 1fr));
-           gap: 8px;
-         }
-
-         .metric {
-           border-radius: 16px;
-           padding: 10px;
-           text-align: center;
-           background: rgba(255, 255, 255, 0.08);
-         }
-
-         .metric span {
-           font-weight: 600;
-           font-size: 1rem;
-         }
-
-         .detail-block {
-           background: rgba(255, 255, 255, 0.04);
-           border-radius: 16px;
-           padding: 12px;
-           font-size: 0.85rem;
-           color: rgba(255, 255, 255, 0.8);
-         }
-
-         .detail-label {
-           text-transform: uppercase;
-           letter-spacing: 0.3em;
-           font-size: 0.65rem;
-           color: rgba(255, 255, 255, 0.5);
-           margin-bottom: 4px;
-         }
-
-         .gradient-0 {
-           background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(168, 85, 247, 0.25));
-         }
-         .gradient-1 {
-           background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(236, 72, 153, 0.25));
-         }
-         .gradient-2 {
-           background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.25));
-         }
-         .gradient-3 {
-           background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(250, 204, 21, 0.25));
-         }
       `}</style>
     </section>
   )

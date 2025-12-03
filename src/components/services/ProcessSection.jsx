@@ -2,32 +2,32 @@ import { useState, useEffect } from 'react'
 
 const processSteps = [
   {
-    title: 'Discover',
-    description: 'We analyze your requirements and define project scope.',
+    title: 'Discovery & Analysis',
+    description: 'We analyze your requirements and define project scope with precision.',
     icon: '🔍',
     color: 'from-blue-500 to-cyan-500',
     details: [
       'Requirement gathering sessions',
       'Stakeholder interviews',
-      'Market analysis',
-      'Competitive research'
+      'Technical feasibility assessment',
+      'Solution architecture planning'
     ]
   },
   {
-    title: 'Design',
-    description: 'Create intuitive interfaces and system architecture.',
+    title: 'Solution Design',
+    description: 'Create intuitive interfaces and robust system architecture.',
     icon: '🎨',
     color: 'from-purple-500 to-violet-500',
     details: [
       'User experience mapping',
       'Wireframing & prototyping',
       'Visual design creation',
-      'Technical architecture'
+      'Technical architecture design'
     ]
   },
   {
-    title: 'Develop',
-    description: 'Build robust solutions with clean, efficient code.',
+    title: 'Development',
+    description: 'Build robust solutions with clean, efficient code and best practices.',
     icon: '💻',
     color: 'from-emerald-500 to-teal-500',
     details: [
@@ -38,8 +38,8 @@ const processSteps = [
     ]
   },
   {
-    title: 'Test',
-    description: 'Rigorous testing to ensure quality and performance.',
+    title: 'Quality Assurance',
+    description: 'Rigorous testing to ensure quality, performance, and security.',
     icon: '✅',
     color: 'from-amber-500 to-orange-500',
     details: [
@@ -50,8 +50,8 @@ const processSteps = [
     ]
   },
   {
-    title: 'Deploy',
-    description: 'Seamless deployment to production environments.',
+    title: 'Deployment',
+    description: 'Seamless deployment to production environments with zero downtime.',
     icon: '🚀',
     color: 'from-pink-500 to-rose-500',
     details: [
@@ -62,15 +62,15 @@ const processSteps = [
     ]
   },
   {
-    title: 'Support',
-    description: 'Ongoing maintenance and optimization.',
+    title: 'Support & Optimization',
+    description: 'Ongoing maintenance, monitoring, and performance optimization.',
     icon: '🛠️',
     color: 'from-indigo-500 to-blue-500',
     details: [
       '24/7 monitoring',
-      'Regular updates',
+      'Regular updates & patches',
       'Performance optimization',
-      'Technical support'
+      'Technical support & maintenance'
     ]
   }
 ]
@@ -94,10 +94,10 @@ const ProcessSection = () => {
             <span>Process</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Blueprint to <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Launch</span>
+            Our <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Solution Process</span>
           </h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Every engagement moves through six precise stages. Hover a step to dive into the playbook.
+            Every project follows our proven six-stage methodology for predictable results
           </p>
         </div>
 

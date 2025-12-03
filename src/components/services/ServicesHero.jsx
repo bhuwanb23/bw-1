@@ -47,22 +47,22 @@ const ServicesHero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            <span className="block mb-2">Our</span>
+            <span className="block mb-2">Tailored</span>
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Services
+              Solutions
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-10">
-            Cutting-edge technology solutions designed to transform your business and drive innovation forward
+            Custom technology solutions designed to meet your specific business requirements and drive innovation
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl">
-              Explore Services
+              Explore Solutions
             </button>
             <button className="px-8 py-4 rounded-full border border-white/20 bg-black/30 text-white font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
-              Contact Us
+              Request a Consultation
             </button>
           </div>
         </div>

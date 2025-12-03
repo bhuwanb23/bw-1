@@ -56,7 +56,7 @@ const ServicesCTA = () => {
           </h2>
           
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-12">
-            Let's discuss how our technology solutions can drive your business forward
+            Let's discuss how our tailored technology solutions can drive your business forward
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -4,29 +4,29 @@ const services = [
   {
     id: 1,
     title: 'Custom Software Development',
-    description: 'Bespoke applications designed for your unique business needs.',
+    description: 'Bespoke applications designed for your unique business needs and challenges.',
     icon: '💻',
     color: 'from-blue-500 to-cyan-500'
   },
   {
     id: 2,
-    title: 'AI & Machine Learning',
-    description: 'Intelligent solutions that learn and adapt to transform your business.',
-    icon: '🤖',
+    title: 'Web & Mobile Solutions',
+    description: 'Responsive web applications and native mobile apps for all platforms.',
+    icon: '🌐',
     color: 'from-purple-500 to-violet-500'
   },
   {
     id: 3,
-    title: 'Cloud & DevOps',
-    description: 'Modern infrastructure for efficient software delivery.',
+    title: 'Cloud & Infrastructure',
+    description: 'Scalable cloud solutions and modern DevOps practices for efficient delivery.',
     icon: '☁️',
     color: 'from-sky-500 to-blue-500'
   },
   {
     id: 4,
-    title: 'UI/UX Design',
-    description: 'Intuitive interfaces that delight users and drive engagement.',
-    icon: '🎨',
+    title: 'AI & Data Solutions',
+    description: 'Intelligent systems and data-driven insights to transform your business.',
+    icon: '🤖',
     color: 'from-emerald-500 to-teal-500'
   }
 ]
@@ -46,10 +46,10 @@ const DetailedServices = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Expert <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Solutions</span>
+            Tailored <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Solutions</span>
           </h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Comprehensive technology services designed to drive your business forward
+            Comprehensive technology services designed to meet your specific business requirements
           </p>
         </div>
         

@@ -22,8 +22,8 @@ const ServicesPage = () => {
         <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ServicesHero />
           <ServiceCategories />
-          <DetailedServices />
           <ProcessSection />
+          <CaseStudiesPreview />
           <ServicesCTA />
         </main>
       </div>
