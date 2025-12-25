@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import FeaturesSection from './components/FeaturesSection.jsx'
@@ -20,8 +20,6 @@ import SEO from './components/SEO.jsx'
 import { pageSEO, organizationSchema, websiteSchema } from './data/seoData.js'
 
 function AppContent() {
-  const location = useLocation()
-
   return (
     <>
       <ScrollToTop />
@@ -86,13 +84,11 @@ function AppContent() {
             } />
           </Routes>
         </div>
-        <div className="mt-24 mr-16 ml-16 ">
+        <div className="relative mt-24 mr-16 ml-16 ">
+          <div className="pointer-events-none absolute inset-x-0 -bottom-24 h-80 bg-[radial-gradient(ellipse_at_bottom,_rgba(59,130,246,0.10),_transparent_62%)] blur-[2px] z-0" />
           <Footer />
         </div>
         <div className="pointer-events-none fixed inset-x-0 top-40 mx-auto h-[600px] max-w-5xl rounded-full bg-gradient-to-b from-transparent via-blue-500/5 via-purple-500/5 to-transparent blur-[220px] z-10" />
-        {location.pathname !== '/blog' && (
-          <div className="pointer-events-none fixed inset-x-0 bottom-0 h-72 bg-[radial-gradient(ellipse_at_bottom,_rgba(59,130,246,0.08),_transparent)] z-10" />
-        )}
       </div>
     </>
   )
