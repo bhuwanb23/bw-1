@@ -8,7 +8,7 @@ const About = () => {
     <section id="about" className="relative py-32 min-h-screen flex items-center">
       <div className="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-center w-full">
         <Reveal className="space-y-6" amount={0.15}>
-          <h2 className={`${SECTION_HEADING} mb-6`}>Why Nulfinity?</h2>
+          <h2 className={`${SECTION_HEADING} mb-6`}>Why Innovexex?</h2>
           <p className="text-lg text-white/60 leading-relaxed font-light mb-8">
             We're not just developers, we're your dedicated technology partners. Our philosophy is built on three pillars: radical innovation, unwavering quality, and transparent collaboration. We dive deep into your vision to craft solutions that are not only functional but truly transformative.
           </p>

@@ -1,18 +1,18 @@
 import { useEffect } from 'react'
 
 const SEO = ({
-  title = 'Nulfinity — From Null to Infinity',
+  title = 'Innovexex — From Null to Infinity',
   description = 'We build bespoke software that transcends boundaries. From intelligent web platforms to innovative mobile apps, we are the architects of your digital future.',
   keywords = 'software development, web development, mobile apps, custom software, technology solutions, digital transformation',
   image = '/og-image.jpg',
   url = '',
   type = 'website',
-  author = 'Nulfinity',
-  siteName = 'Nulfinity',
-  twitterHandle = '@nulfinity',
+  author = 'Innovexex',
+  siteName = 'Innovexex',
+  twitterHandle = '@Innovexex',
   structuredData = null
 }) => {
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://nulfinity.com'
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://Innovexex.com'
   const fullUrl = url ? `${baseUrl}${url}` : baseUrl
   const imageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`
 

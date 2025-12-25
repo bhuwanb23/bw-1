@@ -6,7 +6,7 @@ const codeSnippets = [
   {
     title: 'React Hook',
     language: 'JavaScript',
-    code: `const useNulfinity = () => {
+    code: `const useInnovexex = () => {
   const [magic, setMagic] = useState(true)
   
   useEffect(() => {
@@ -23,7 +23,7 @@ const codeSnippets = [
     title: 'Python AI',
     language: 'Python',
     code: `def predict_future():
-    model = NulfinityAI()
+    model = InnovexexAI()
     data = process_insights()
     
     prediction = model.predict(data)
@@ -36,7 +36,7 @@ const codeSnippets = [
     title: 'Go Microservice',
     language: 'Go',
     code: `func DeployMagic() error {
-    service := nulfinity.NewService()
+    service := Innovexex.NewService()
     
     if err := service.Scale(); err != nil {
         return err
@@ -62,7 +62,7 @@ const codeSnippets = [
   {
     title: 'CSS Framework',
     language: 'CSS',
-    code: `.nulfinity-card {
+    code: `.Innovexex-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);

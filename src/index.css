@@ -3,9 +3,9 @@
 :root {
   --font-sans: "DM Sans", "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-heading: "Space Grotesk", "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --color-nulfinity-primary: 88 101 242;
-  --color-nulfinity-secondary: 16 230 255;
-  --color-nulfinity-accent: 196 181 253;
+  --color-Innovexex-primary: 88 101 242;
+  --color-Innovexex-secondary: 16 230 255;
+  --color-Innovexex-accent: 196 181 253;
   color-scheme: dark;
 }
 
@@ -62,9 +62,9 @@ h1, h2, h3, h4, h5, h6 {
 .neon-text {
   background-image: linear-gradient(
     120deg,
-    rgb(var(--color-nulfinity-secondary)) 0%,
-    rgb(var(--color-nulfinity-primary)) 45%,
-    rgb(var(--color-nulfinity-accent)) 100%
+    rgb(var(--color-Innovexex-secondary)) 0%,
+    rgb(var(--color-Innovexex-primary)) 45%,
+    rgb(var(--color-Innovexex-accent)) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;

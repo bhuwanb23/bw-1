@@ -1,41 +1,41 @@
 // SEO data for all pages
 export const siteConfig = {
-  name: 'Nulfinity',
+  name: 'Innovexex',
   tagline: 'From Null to Infinity',
   description: 'We build bespoke software that transcends boundaries. From intelligent web platforms to innovative mobile apps, we are the architects of your digital future.',
-  url: 'https://nulfinity.com', // Update with your actual domain
-  twitterHandle: '@nulfinity',
+  url: 'https://Innovexex.com', // Update with your actual domain
+  twitterHandle: '@Innovexex',
   defaultImage: '/og-image.jpg',
-  author: 'Nulfinity',
+  author: 'Innovexex',
 }
 
 export const pageSEO = {
   home: {
-    title: 'Nulfinity — From Null to Infinity | Custom Software Development',
-    description: 'Engineering the infinite. We build bespoke software solutions, web platforms, and mobile apps that transcend boundaries. Transform your digital future with Nulfinity.',
+    title: 'Innovexex — From Null to Infinity | Custom Software Development',
+    description: 'Engineering the infinite. We build bespoke software solutions, web platforms, and mobile apps that transcend boundaries. Transform your digital future with Innovexex.',
     keywords: 'custom software development, web development, mobile app development, technology solutions, digital transformation, software engineering, bespoke software',
     path: '/',
   },
   services: {
-    title: 'Services — Custom Software Development & Technology Solutions | Nulfinity',
+    title: 'Services — Custom Software Development & Technology Solutions | Innovexex',
     description: 'Comprehensive software development services including custom web applications, mobile apps, cloud solutions, and digital transformation. Expert team delivering scalable, innovative solutions.',
     keywords: 'software development services, custom web applications, mobile app development, cloud solutions, digital transformation, software consulting, technology services',
     path: '/services',
   },
   products: {
-    title: 'Products — Innovative Software Solutions & Tools | Nulfinity',
+    title: 'Products — Innovative Software Solutions & Tools | Innovexex',
     description: 'Explore our suite of innovative software products and tools designed to empower businesses. From developer tools to enterprise solutions, discover what we\'ve built.',
     keywords: 'software products, developer tools, enterprise software, SaaS products, technology products, software solutions',
     path: '/products',
   },
   blog: {
-    title: 'Blog & Insights — Tech Articles, Guides & Community Discussions | Nulfinity',
+    title: 'Blog & Insights — Tech Articles, Guides & Community Discussions | Innovexex',
     description: 'Stay updated with the latest tech insights, tutorials, best practices, and community discussions. Learn from expert developers and industry leaders.',
     keywords: 'tech blog, software development blog, programming tutorials, technology insights, developer resources, tech articles',
     path: '/blog',
   },
   proposal: {
-    title: 'Request a Proposal — Get Your Custom Software Solution | Nulfinity',
+    title: 'Request a Proposal — Get Your Custom Software Solution | Innovexex',
     description: 'Ready to transform your business? Request a free proposal for your custom software project. Expert consultation, transparent pricing, and innovative solutions.',
     keywords: 'software proposal, custom software quote, software consultation, project proposal, software development quote',
     path: '/proposal',
@@ -46,20 +46,20 @@ export const pageSEO = {
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Nulfinity',
+  name: 'Innovexex',
   url: siteConfig.url,
   logo: `${siteConfig.url}/logo.png`,
   description: siteConfig.description,
   foundingDate: '2024',
   sameAs: [
-    'https://twitter.com/nulfinity',
-    'https://github.com/nulfinity',
-    'https://www.linkedin.com/company/nulfinity',
+    'https://twitter.com/Innovexex',
+    'https://github.com/Innovexex',
+    'https://www.linkedin.com/company/Innovexex',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
-    email: 'contact@nulfinity.com', // Update with actual email
+    email: 'contact@Innovexex.com', // Update with actual email
   },
 }
 
@@ -88,7 +88,7 @@ export const websiteSchema = {
 export const softwareApplicationSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Nulfinity Custom Software Solutions',
+  name: 'Innovexex Custom Software Solutions',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, iOS, Android',
   offers: {

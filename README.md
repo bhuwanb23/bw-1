@@ -1,4 +1,4 @@
-# Nulfinity
+# Innovexex
 
 A modern, responsive business website built with React, Vite, and Tailwind CSS.
 
@@ -21,8 +21,8 @@ A modern, responsive business website built with React, Vite, and Tailwind CSS.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/nulfinity.git
-cd nulfinity
+git clone https://github.com/YOUR_USERNAME/Innovexex.git
+cd Innovexex
 ```
 
 2. Install dependencies

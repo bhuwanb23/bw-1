@@ -1,4 +1,4 @@
-# robots.txt for Nulfinity
+# robots.txt for Innovexex
 User-agent: *
 Allow: /
 
@@ -9,7 +9,7 @@ Disallow: /_next/
 Disallow: /private/
 
 # Sitemap location
-Sitemap: https://nulfinity.com/sitemap.xml
+Sitemap: https://Innovexex.com/sitemap.xml
 
 # Crawl-delay (optional, helps prevent server overload)
 Crawl-delay: 1

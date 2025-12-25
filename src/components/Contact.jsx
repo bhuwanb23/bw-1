@@ -10,7 +10,7 @@ const Contact = () => {
           <div className="rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm p-12 max-w-3xl mx-auto">
             <h2 className={`${SECTION_HEADING} mb-6`}>Ready to Build the Future?</h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 font-light">
-              Let's discuss how Nulfinity can elevate your business with cutting-edge software solutions. Your vision, our expertise.
+              Let's discuss how Innovexex can elevate your business with cutting-edge software solutions. Your vision, our expertise.
             </p>
             <a
               href="#contact"

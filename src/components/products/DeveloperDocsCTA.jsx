@@ -3,7 +3,7 @@ import { useState } from 'react'
 const DeveloperDocsCTA = () => {
   const [copied, setCopied] = useState(false)
 
-  const codeSnippet = `import { NexusFlow } from '@nulfinity/nexusflow';
+  const codeSnippet = `import { NexusFlow } from '@Innovexex/nexusflow';
 
 const client = new NexusFlow({
   apiKey: 'your-api-key',

@@ -89,13 +89,13 @@ const WhyChooseUs = () => {
         <Reveal className="text-center mb-16" amount={0.2}>
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-purple-400 animate-pulse" />
-            <span>The Nulfinity Advantage</span>
+            <span>The Innovexex Advantage</span>
           </div>
           
           <h2 className={`${SECTION_HEADING} mb-6`}>
             Why choose{' '}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              Nulfinity?
+              Innovexex?
             </span>
           </h2>
           

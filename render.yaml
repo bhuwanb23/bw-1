@@ -1,6 +1,6 @@
 services:
   - type: static
-    name: nulfinity
+    name: Innovexex
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     headers:

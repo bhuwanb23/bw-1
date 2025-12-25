@@ -1,6 +1,6 @@
 # Deployment Guide for Render
 
-This guide will help you deploy your Nulfinity website to Render for free.
+This guide will help you deploy your Innovexex website to Render for free.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ git push -u origin main
    - Select your repository: `YOUR_USERNAME/YOUR_REPO_NAME`
 
 4. **Configure Build Settings**
-   - **Name**: `nulfinity` (or any name you prefer)
+   - **Name**: `Innovexex` (or any name you prefer)
    - **Branch**: `main` (or `master` if that's your default branch)
    - **Root Directory**: Leave empty (or `./` if your project is in root)
    - **Build Command**: `npm install && npm run build`
@@ -70,7 +70,7 @@ git push -u origin main
 
 7. **Wait for Deployment**
    - You'll see the build logs in real-time
-   - Once complete, your site will be live at: `https://nulfinity.onrender.com` (or your custom name)
+   - Once complete, your site will be live at: `https://Innovexex.onrender.com` (or your custom name)
 
 #### Option B: Using render.yaml (Alternative)
 

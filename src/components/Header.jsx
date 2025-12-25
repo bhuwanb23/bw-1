@@ -33,7 +33,7 @@ const Header = () => {
             NF
           </span>
           <span className="hidden flex-col leading-tight sm:flex transition-all duration-300">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 sm:text-[11px] sm:tracking-[0.22em]">Nulfinity</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 sm:text-[11px] sm:tracking-[0.22em]">Innovexex</span>
             <span className="text-xs text-white/80">Custom Software Studio</span>
           </span>
         </Link>

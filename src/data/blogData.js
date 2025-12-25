@@ -49,7 +49,7 @@ export const blogArticles = [
     date: 'May 5, 2025',
     tags: ['Low-code', 'Product', 'Teams'],
     content:
-      'Low-code is not a silver bullet, but when paired with well-defined guardrails it unlocks new velocity. At Nulfinity we pair FusionAuth-backed micro frontends with a sanctioned low-code workspace. Designers can prototype data-driven workflows without waiting for sprint grooming, and engineers productize the validated flows inside a shared component library. This article shares the governance checklist, security model, and education loops that keep the program healthy.'
+      'Low-code is not a silver bullet, but when paired with well-defined guardrails it unlocks new velocity. At Innovexex we pair FusionAuth-backed micro frontends with a sanctioned low-code workspace. Designers can prototype data-driven workflows without waiting for sprint grooming, and engineers productize the validated flows inside a shared component library. This article shares the governance checklist, security model, and education loops that keep the program healthy.'
   },
   {
     id: 'nas-demystified',

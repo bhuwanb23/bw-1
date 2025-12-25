@@ -62,7 +62,7 @@ const WhyWorkWithUs = () => {
             Why Work With <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Us</span>
           </h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            The Nulfinity advantage that sets us apart from the competition
+            The Innovexex advantage that sets us apart from the competition
           </p>
         </div>
         

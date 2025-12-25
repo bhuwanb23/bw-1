@@ -9,7 +9,7 @@ const testimonialsData = [
     company: 'OrbitTech Solutions',
     industry: 'FinTech',
     quote:
-      "Nulfinity transformed our legacy system into a modern, scalable platform. They outpaced our scale projections by 5x while maintaining elegant design and bulletproof infrastructure. The team's expertise in both frontend and backend development is unmatched.",
+      "Innovexex transformed our legacy system into a modern, scalable platform. They outpaced our scale projections by 5x while maintaining elegant design and bulletproof infrastructure. The team's expertise in both frontend and backend development is unmatched.",
     project: 'Financial Trading Platform',
     result: '500% performance improvement',
     logo: '🏢',
@@ -22,7 +22,7 @@ const testimonialsData = [
     company: 'Quantum Dynamics',
     industry: 'AI Research',
     quote:
-      'Working with Nulfinity was a game-changer for our AI research platform. They delivered complex machine learning workflows faster than we imagined, saving us hundreds of hours each quarter. Their deep understanding of AI technologies is remarkable.',
+      'Working with Innovexex was a game-changer for our AI research platform. They delivered complex machine learning workflows faster than we imagined, saving us hundreds of hours each quarter. Their deep understanding of AI technologies is remarkable.',
     project: 'AI Research Platform',
     result: 'Reduced processing time by 70%',
     logo: '🧠',
@@ -35,7 +35,7 @@ const testimonialsData = [
     company: 'Aether Innovations',
     industry: 'SaaS',
     quote:
-      "The craftsmanship and attention to detail from Nulfinity is absolutely unmatched. Our enterprise clients consistently rave about the user experience and performance. They didn't just build software; they built a competitive advantage.",
+      "The craftsmanship and attention to detail from Innovexex is absolutely unmatched. Our enterprise clients consistently rave about the user experience and performance. They didn't just build software; they built a competitive advantage.",
     project: 'Enterprise SaaS Platform',
     result: '40% increase in user engagement',
     logo: '⚡',
@@ -48,7 +48,7 @@ const testimonialsData = [
     company: 'CloudVault Systems',
     industry: 'Cloud Infrastructure',
     quote:
-      "Nulfinity's expertise in cloud architecture and DevOps practices helped us build a robust, auto-scaling infrastructure. Their proactive approach to security and performance optimization exceeded all our expectations.",
+      "Innovexex's expertise in cloud architecture and DevOps practices helped us build a robust, auto-scaling infrastructure. Their proactive approach to security and performance optimization exceeded all our expectations.",
     project: 'Cloud Infrastructure Platform',
     result: '99.9% uptime achieved',
     logo: '☁️',

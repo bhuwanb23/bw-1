@@ -103,7 +103,7 @@ const Sidebar = ({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.15),transparent_70%)]" />
         <div className="relative space-y-4">
           <h3 className="text-lg font-bold text-white">Newsletter</h3>
-          <p className="text-sm text-white/70">Get curated stories from Nulfinity every Friday.</p>
+          <p className="text-sm text-white/70">Get curated stories from Innovexex every Friday.</p>
           <form
             className="space-y-3"
             onSubmit={(e) => {

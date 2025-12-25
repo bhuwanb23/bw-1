@@ -6,7 +6,7 @@ const contactInfo = [
     title: 'Email Us',
     description: 'For project inquiries and proposals',
     icon: '📧',
-    content: 'proposals@nulfinity.com',
+    content: 'proposals@Innovexex.com',
     color: 'from-blue-500 to-cyan-500'
   },
   {
