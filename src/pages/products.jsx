@@ -1,11 +1,8 @@
 import ProductsHero from '../components/products/ProductsHero.jsx'
-import FeaturedProducts from '../components/products/FeaturedProducts.jsx'
-import ProductFilterBar from '../components/products/ProductFilterBar.jsx'
 import ProductGrid from '../components/products/ProductGrid.jsx'
-import SocialProof from '../components/products/SocialProof.jsx'
-import DeveloperDocsCTA from '../components/products/DeveloperDocsCTA.jsx'
 import ProductsFooterCTA from '../components/products/ProductsFooterCTA.jsx'
 import SEO from '../components/SEO.jsx'
+import Reveal from '../components/Reveal.jsx'
 import { pageSEO } from '../data/seoData.js'
 
 const ProductsPage = () => {
@@ -21,11 +18,13 @@ const ProductsPage = () => {
       <div className="relative z-20">
         <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ProductsHero />
-          <FeaturedProducts />
-          <ProductGrid />
-          <SocialProof />
+          <Reveal delay={0} amount={0.15} margin="-10% 0px">
+            <ProductGrid />
+          </Reveal>
           {/* <DeveloperDocsCTA /> */}
-          <ProductsFooterCTA />
+          <Reveal delay={120} amount={0.15} margin="-10% 0px">
+            <ProductsFooterCTA />
+          </Reveal>
         </main>
       </div>
     </div>
