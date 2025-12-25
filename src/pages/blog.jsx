@@ -161,10 +161,10 @@ const BlogSplitView = ({
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-        <div className="space-y-4 rounded-3xl border border-white/10 bg-transparent p-4 backdrop-blur-xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-40 pointer-events-none" />
+        <div className="space-y-4 rounded-3xl border border-white/10 bg-gradient-to-br from-blue-500/10 via-black/35 to-purple-500/8 p-4 backdrop-blur-xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-50 pointer-events-none" />
           <div className="relative flex gap-3">
-            <div className="flex-1 rounded-2xl border border-white/10 bg-transparent p-3 backdrop-blur-lg">
+            <div className="flex-1 rounded-2xl border border-white/10 bg-gradient-to-br from-white/6 via-black/40 to-black/30 p-3 backdrop-blur-lg">
               <input
                 value={searchValue}
                 onChange={(e) => onSearchChange(e.target.value)}
@@ -179,7 +179,7 @@ const BlogSplitView = ({
               Write Blog
             </button>
           </div>
-          <div className="relative rounded-2xl border border-white/10 bg-transparent max-h-[70vh] overflow-y-auto backdrop-blur-lg">
+          <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 via-black/45 to-black/35 max-h-[70vh] overflow-y-auto backdrop-blur-lg">
             {articles.map((article) => {
               const active = article.id === selectedBlogId
               return (
@@ -187,7 +187,7 @@ const BlogSplitView = ({
                   key={article.id}
                   onClick={() => onSelectBlog(article.id)}
                   className={`w-full text-left border-b border-white/5 px-4 py-4 transition-colors last:border-none ${
-                    active ? 'bg-white/10' : 'hover:bg-white/5'
+                    active ? 'bg-white/12' : 'hover:bg-white/8'
                   }`}
                 >
                   <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">{article.category}</p>
@@ -205,7 +205,7 @@ const BlogSplitView = ({
 
         <div className="hidden lg:block space-y-6">
           {selectedBlog ? (
-            <article className="rounded-3xl border border-white/10 bg-transparent p-6 space-y-4 backdrop-blur-xl shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
+            <article className="rounded-3xl border border-white/10 bg-gradient-to-br from-blue-500/8 via-black/40 to-purple-500/6 p-6 space-y-4 backdrop-blur-xl shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">{selectedBlog.category}</p>
@@ -227,7 +227,7 @@ const BlogSplitView = ({
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center text-white/60">Select a blog</div>
           )}
 
-          <div className="rounded-3xl border border-white/10 bg-transparent p-6 space-y-4 backdrop-blur-xl">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/6 via-black/45 to-black/35 p-6 space-y-4 backdrop-blur-xl">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">Write</p>
@@ -247,7 +247,7 @@ const BlogSplitView = ({
       {/* Mobile/Web Blog Form Modal */}
       {showBlogForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setShowBlogForm(false)}>
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-gradient-to-br from-blue-500/10 via-black/70 to-purple-500/10 backdrop-blur-xl p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-semibold text-white">Publish a new blog</h3>
               <button onClick={() => setShowBlogForm(false)} className="text-white/60 hover:text-white">
@@ -307,7 +307,7 @@ const BlogSplitView = ({
       {/* Mobile Blog Detail Modal */}
       {showBlogDetail && selectedBlog && (
         <div className="lg:hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setShowBlogDetail(false)}>
-          <div className="relative w-full max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-gradient-to-br from-blue-500/10 via-black/75 to-purple-500/10 backdrop-blur-xl p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-white">{selectedBlog.title}</h2>
               <button onClick={() => setShowBlogDetail(false)} className="text-white/60 hover:text-white">

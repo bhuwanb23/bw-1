@@ -143,12 +143,15 @@ const ProductGrid = () => {
           {products.map((product, index) => (
             <Reveal key={product.id} delay={index * 60} amount={0.15} margin="-10% 0px">
               <div
-                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-black/20 backdrop-blur-xl cursor-pointer transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_26px_80px_rgba(0,0,0,0.35)]"
+                className="group relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/6 via-black/30 to-black/20 backdrop-blur-xl cursor-pointer transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_26px_80px_rgba(0,0,0,0.35)] hover:bg-gradient-to-br hover:from-white/12 hover:via-black/25 hover:to-black/10"
               >
                 {/* Glow effect */}
                 <div
-                  className={`absolute -inset-20 bg-gradient-to-br ${product.color} opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-[0.10]`}
+                  className={`absolute -inset-20 bg-gradient-to-br ${product.color} opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-[0.18]`}
                 />
+
+                {/* Visible inner panel for better contrast */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/8 via-transparent to-black/20 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="p-5 h-full flex flex-col relative z-10">
                   {/* Product header with icon and rating */}

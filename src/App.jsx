@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import FeaturesSection from './components/FeaturesSection.jsx'
@@ -19,9 +19,11 @@ import ScrollToTop from './components/ScrollToTop.jsx'
 import SEO from './components/SEO.jsx'
 import { pageSEO, organizationSchema, websiteSchema } from './data/seoData.js'
 
-function App() {
+function AppContent() {
+  const location = useLocation()
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
       {/* Global Structured Data */}
       <SEO
@@ -51,14 +53,14 @@ function App() {
                 />
                 <main className="relative w-full px-4 pt-28 sm:px-8 lg:px-12">
                   <Hero />
-                <FeaturesSection />
-                <ServicesOverview />
-                <ProductsShowcase />
-                <OpenSourceHighlight />
-                <WhyChooseUs />
-                <Testimonials />
-                <TechStackSlider />
-                <CallToActionBanner />
+                  <FeaturesSection />
+                  <ServicesOverview />
+                  <ProductsShowcase />
+                  <OpenSourceHighlight />
+                  <WhyChooseUs />
+                  <Testimonials />
+                  <TechStackSlider />
+                  <CallToActionBanner />
                 </main>
               </>
             } />
@@ -88,8 +90,18 @@ function App() {
           <Footer />
         </div>
         <div className="pointer-events-none fixed inset-x-0 top-40 mx-auto h-[600px] max-w-5xl rounded-full bg-gradient-to-b from-transparent via-blue-500/5 via-purple-500/5 to-transparent blur-[220px] z-10" />
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 h-72 bg-[radial-gradient(ellipse_at_bottom,_rgba(59,130,246,0.08),_transparent)] z-10" />
+        {location.pathname !== '/blog' && (
+          <div className="pointer-events-none fixed inset-x-0 bottom-0 h-72 bg-[radial-gradient(ellipse_at_bottom,_rgba(59,130,246,0.08),_transparent)] z-10" />
+        )}
       </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   )
 }
