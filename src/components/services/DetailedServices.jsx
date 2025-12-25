@@ -18,7 +18,7 @@ const services = [
     title: 'Web Applications',
     tagline: 'Fast, accessible, resilient',
     description: 'High-performance web apps with strong UX, SEO hygiene, and maintainable front-end systems.',
-    icon: '�️',
+    icon: '🖥',
     color: 'from-purple-500 to-violet-400',
     bestFor: ['Dashboards', 'Customer portals', 'B2B workflows'],
     deliverables: ['Component architecture', 'Performance budget', 'Accessibility baseline', 'Observability basics'],
