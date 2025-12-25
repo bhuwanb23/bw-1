@@ -3,37 +3,37 @@ import { useState, useEffect } from 'react'
 const advantages = [
   {
     title: 'Quality',
-    description: 'We deliver pixel-perfect solutions with rigorous testing and quality assurance.',
+    description: 'Testing + reviews in the loop.',
     icon: '✅',
     color: 'from-blue-500 to-cyan-500'
   },
   {
     title: 'Speed',
-    description: 'Rapid development cycles without compromising on quality or functionality.',
+    description: 'Weekly demos, small releases.',
     icon: '⚡',
     color: 'from-purple-500 to-violet-500'
   },
   {
     title: 'Scalability',
-    description: 'Solutions designed to grow with your business and adapt to changing needs.',
+    description: 'Designed to scale and maintain.',
     icon: '📈',
     color: 'from-emerald-500 to-teal-500'
   },
   {
     title: 'Expertise',
-    description: 'Deep technical knowledge across multiple domains and cutting-edge technologies.',
+    description: 'Senior engineering judgment.',
     icon: '🧠',
     color: 'from-amber-500 to-orange-500'
   },
   {
     title: 'Support',
-    description: 'Comprehensive post-launch support and maintenance for long-term success.',
+    description: 'Post-launch support options.',
     icon: '🛠️',
     color: 'from-pink-500 to-rose-500'
   },
   {
     title: 'Innovation',
-    description: 'We stay ahead of trends to deliver forward-thinking solutions.',
+    description: 'Practical improvements only.',
     icon: '🚀',
     color: 'from-indigo-500 to-purple-500'
   }
@@ -67,15 +67,17 @@ const WhyWorkWithUs = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/60 mb-5 backdrop-blur-xl">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
             <span>Why us</span>
           </div>
 
-          <h2 className="text-2xl md:text-4xl font-semibold text-white">Operating principles, not buzzwords.</h2>
-          <p className="mt-3 text-white/70 max-w-3xl">
-            What you can expect during delivery—and what we optimize for when trade-offs show up.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Built for <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">delivery</span>
+          </h2>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            Fast communication. Clean code. Predictable releases.
           </p>
         </div>
 

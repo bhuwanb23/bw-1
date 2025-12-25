@@ -53,14 +53,16 @@ const TechnologiesTools = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/60 mb-5 backdrop-blur-xl">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
             <span>Toolchain</span>
           </div>
-          <h2 className="text-2xl md:text-4xl font-semibold text-white">Technologies we ship with.</h2>
-          <p className="mt-3 text-white/70 max-w-3xl">
-            We prefer stable, widely-supported tools then document constraints so the system remains maintainable.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Tech we <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">use</span>
+          </h2>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            Modern stack. Proven defaults.
           </p>
         </div>
         

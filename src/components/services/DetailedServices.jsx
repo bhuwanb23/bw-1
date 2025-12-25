@@ -4,117 +4,79 @@ const services = [
   {
     id: 'product-engineering',
     title: 'Product Engineering',
-    tagline: 'From MVP to mature platform',
-    description: 'Design, build, and iterate on products with clean architecture and measurable delivery.',
+    tagline: 'MVP to platform',
+    description: 'Build fast, scale safely.',
     icon: '🧩',
     color: 'from-blue-500 to-cyan-400',
     bestFor: ['New products', 'MVP builds', 'Scaling an existing platform'],
-    deliverables: ['Architecture + roadmap', 'Design system foundations', 'Core features + analytics', 'Release pipeline + runbooks'],
+    deliverables: ['Architecture', 'Core features', 'Release pipeline'],
     timeline: '4–12 weeks (MVP), then continuous',
     stack: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
   },
   {
     id: 'web-apps',
     title: 'Web Applications',
-    tagline: 'Fast, accessible, resilient',
-    description: 'High-performance web apps with strong UX, SEO hygiene, and maintainable front-end systems.',
+    tagline: 'Fast + accessible',
+    description: 'Performance-first web apps.',
     icon: '🖥',
     color: 'from-purple-500 to-violet-400',
     bestFor: ['Dashboards', 'Customer portals', 'B2B workflows'],
-    deliverables: ['Component architecture', 'Performance budget', 'Accessibility baseline', 'Observability basics'],
+    deliverables: ['UI system', 'Core flows', 'Performance baseline'],
     timeline: '3–10 weeks',
     stack: ['React', 'Vite', 'Tailwind', 'Playwright'],
   },
   {
     id: 'mobile',
     title: 'Mobile Development',
-    tagline: 'Native-feeling apps',
-    description: 'Mobile apps that feel snappy and reliable, with thoughtful offline-first and release workflows.',
+    tagline: 'Native-feel',
+    description: 'Reliable mobile apps.',
     icon: '📱',
     color: 'from-sky-500 to-blue-400',
     bestFor: ['Companion apps', 'Field ops', 'Consumer experiences'],
-    deliverables: ['UI flows + navigation', 'Offline cache strategy', 'Push notifications', 'Store release setup'],
+    deliverables: ['Navigation', 'Offline-ready', 'Store releases'],
     timeline: '6–14 weeks',
     stack: ['React Native', 'Expo', 'Firebase', 'Sentry'],
   },
   {
     id: 'cloud-devops',
     title: 'Cloud & DevOps',
-    tagline: 'Infra you can trust',
-    description: 'Deploy faster with secure cloud foundations, automated pipelines, and monitoring that catches issues early.',
+    tagline: 'Secure + automated',
+    description: 'Deploy fast with guardrails.',
     icon: '☁️',
     color: 'from-amber-500 to-orange-400',
     bestFor: ['New infra setup', 'Cloud migration', 'CI/CD + observability'],
-    deliverables: ['CI/CD pipelines', 'IaC foundations', 'Monitoring + alerting', 'Backup + incident playbooks'],
+    deliverables: ['CI/CD', 'Infra as code', 'Monitoring'],
     timeline: '2–8 weeks',
     stack: ['AWS/Azure', 'Docker', 'Terraform', 'GitHub Actions'],
   },
   {
     id: 'integrations',
     title: 'APIs & Integrations',
-    tagline: 'Systems that connect',
-    description: 'API-first systems and integrations that keep data consistent across tools and teams.',
+    tagline: 'Connect systems',
+    description: 'APIs that don’t break.',
     icon: '🔗',
     color: 'from-emerald-500 to-teal-400',
     bestFor: ['3rd-party integrations', 'Microservices', 'Event-driven workflows'],
-    deliverables: ['API design + versioning', 'Auth strategy', 'Rate limits + audit logs', 'Integration tests'],
+    deliverables: ['API design', 'Auth', 'Integration tests'],
     timeline: '2–6 weeks',
     stack: ['REST/GraphQL', 'Node.js', 'PostgreSQL', 'Redis'],
   },
   {
     id: 'ai-data',
     title: 'AI & Data',
-    tagline: 'Practical ML, not hype',
-    description: 'AI features and data pipelines with clear evaluation metrics, privacy boundaries, and safe rollouts.',
+    tagline: 'Practical AI',
+    description: 'AI with measurable wins.',
     icon: '🧠',
     color: 'from-pink-500 to-rose-400',
     bestFor: ['Search & recommendations', 'Automation', 'Analytics + forecasting'],
-    deliverables: ['Data audit + feasibility', 'Model evaluation', 'Human-in-the-loop flows', 'Monitoring + retraining plan'],
+    deliverables: ['Feasibility', 'Evaluation', 'Monitoring'],
     timeline: '4–10 weeks',
     stack: ['Python', 'PyTorch', 'Vector DB', 'MLflow'],
   },
 ]
 
-const engagementModels = [
-  {
-    title: 'Fixed scope (MVP)',
-    description: 'Best when scope is clear and you want a defined deliverable with a delivery date.',
-    bullets: ['Milestone plan', 'Weekly demos', 'Handover checklist'],
-  },
-  {
-    title: 'Dedicated team',
-    description: 'A small, focused team embedded into your roadmap for continuous delivery.',
-    bullets: ['Sprint cadence', 'Shared backlog', 'Velocity + quality reporting'],
-  },
-  {
-    title: 'Consulting / audit',
-    description: 'Short engagement to de-risk decisions and improve systems you already have.',
-    bullets: ['Architecture review', 'Performance + security audit', 'Actionable plan'],
-  },
-]
-
-const faqs = [
-  {
-    q: 'How fast can we start?',
-    a: 'Typically within a few business days once we align on scope and success criteria. For urgent work, we can prioritize an accelerated kickoff.',
-  },
-  {
-    q: 'Do you work with existing teams?',
-    a: 'Yes. We can integrate with your team, take ownership of a module, or lead delivery end-to-end depending on what you need.',
-  },
-  {
-    q: 'What do you need from us to begin?',
-    a: 'A short goals call, key stakeholders, and access to any existing product/infra context. If nothing exists yet, we start from discovery.',
-  },
-  {
-    q: 'Do you provide maintenance after launch?',
-    a: 'Yes. We support post-launch with monitoring, upgrades, bugfix SLAs (if needed), and ongoing improvements.',
-  },
-]
-
 const DetailedServices = () => {
   const [activeServiceId, setActiveServiceId] = useState(services[0].id)
-  const [openFaq, setOpenFaq] = useState(0)
 
   const activeService = services.find((s) => s.id === activeServiceId) ?? services[0]
 
@@ -132,16 +94,16 @@ const DetailedServices = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/60 mb-5 backdrop-blur-xl">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-            <span>Service Specs</span>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6 backdrop-blur-xl">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+            <span>Services</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
-            A clear menu of what we deliver.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Choose a <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">track</span>
           </h2>
-          <p className="mt-3 max-w-3xl text-white/70">
-            Pick a track, see deliverables, and understand what “done” means. No filler.
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            Direct deliverables. Clear timelines.
           </p>
         </div>
 
@@ -188,7 +150,7 @@ const DetailedServices = () => {
                   <div className="rounded-2xl border border-white/10 bg-black/30 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Best for</p>
                     <ul className="mt-3 space-y-2">
-                      {activeService.bestFor.map((item) => (
+                      {activeService.bestFor.slice(0, 2).map((item) => (
                         <li key={item} className="text-sm text-white/80 flex items-start gap-2">
                           <span className={`mt-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${activeService.color}`} />
                           <span>{item}</span>
@@ -200,7 +162,7 @@ const DetailedServices = () => {
                   <div className="rounded-2xl border border-white/10 bg-black/30 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Deliverables</p>
                     <ul className="mt-3 space-y-2">
-                      {activeService.deliverables.map((item) => (
+                      {activeService.deliverables.slice(0, 3).map((item) => (
                         <li key={item} className="text-sm text-white/80 flex items-start gap-2">
                           <span className={`mt-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${activeService.color}`} />
                           <span>{item}</span>
@@ -214,7 +176,7 @@ const DetailedServices = () => {
                     <p className="mt-3 text-sm text-white/80">{activeService.timeline}</p>
                     <p className="mt-5 text-[10px] uppercase tracking-[0.25em] text-white/50">Stack (example)</p>
                     <div className="mt-2 flex flex-wrap gap-2">
-                      {activeService.stack.map((tech) => (
+                      {activeService.stack.slice(0, 3).map((tech) => (
                         <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75">
                           {tech}
                         </span>
@@ -234,52 +196,6 @@ const DetailedServices = () => {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-black/30 backdrop-blur-xl p-6">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Engagement models</p>
-            <h3 className="mt-3 text-xl font-semibold text-white">Choose how we work together.</h3>
-            <div className="mt-5 space-y-4">
-              {engagementModels.map((m) => (
-                <div key={m.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
-                  <p className="text-sm font-semibold text-white">{m.title}</p>
-                  <p className="mt-1 text-sm text-white/70">{m.description}</p>
-                  <ul className="mt-3 space-y-2">
-                    {m.bullets.map((b) => (
-                      <li key={b} className="text-sm text-white/80 flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-black/30 backdrop-blur-xl p-6">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">FAQ</p>
-            <h3 className="mt-3 text-xl font-semibold text-white">Details you’ll ask anyway.</h3>
-            <div className="mt-5 space-y-3">
-              {faqs.map((f, idx) => {
-                const open = openFaq === idx
-                return (
-                  <button
-                    key={f.q}
-                    type="button"
-                    onClick={() => setOpenFaq(open ? -1 : idx)}
-                    className="w-full text-left rounded-2xl border border-white/10 bg-black/30 px-4 py-4 hover:border-white/20 transition-all"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <p className="text-sm font-semibold text-white">{f.q}</p>
-                      <span className={`mt-1 text-white/70 transition-transform ${open ? 'rotate-45' : ''}`}>+</span>
-                    </div>
-                    {open && <p className="mt-3 text-sm text-white/70">{f.a}</p>}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )

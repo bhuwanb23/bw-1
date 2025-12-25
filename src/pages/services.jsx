@@ -1,6 +1,4 @@
 import ServicesHero from '../components/services/ServicesHero.jsx'
-import OutcomesBoard from '../components/services/OutcomesBoard.jsx'
-import DeliveryPlaybook from '../components/services/DeliveryPlaybook.jsx'
 import DetailedServices from '../components/services/DetailedServices.jsx'
 import ProcessSection from '../components/services/ProcessSection.jsx'
 import WhyWorkWithUs from '../components/services/WhyWorkWithUs.jsx'
@@ -25,24 +23,18 @@ const ServicesPage = () => {
         <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ServicesHero />
           <Reveal delay={0} amount={0.15} margin="-10% 0px">
-            <OutcomesBoard />
-          </Reveal>
-          <Reveal delay={80} amount={0.15} margin="-10% 0px">
             <DetailedServices />
           </Reveal>
-          <Reveal delay={120} amount={0.15} margin="-10% 0px">
-            <DeliveryPlaybook />
-          </Reveal>
-          <Reveal delay={160} amount={0.15} margin="-10% 0px">
+          <Reveal delay={80} amount={0.15} margin="-10% 0px">
             <ProcessSection />
           </Reveal>
-          <Reveal delay={200} amount={0.15} margin="-10% 0px">
+          <Reveal delay={120} amount={0.15} margin="-10% 0px">
             <WhyWorkWithUs />
           </Reveal>
-          <Reveal delay={240} amount={0.15} margin="-10% 0px">
+          <Reveal delay={160} amount={0.15} margin="-10% 0px">
             <TechnologiesTools />
           </Reveal>
-          <Reveal delay={280} amount={0.15} margin="-10% 0px">
+          <Reveal delay={200} amount={0.15} margin="-10% 0px">
             <ServicesCTA />
           </Reveal>
         </main>
