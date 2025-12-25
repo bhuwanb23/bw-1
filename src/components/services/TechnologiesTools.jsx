@@ -73,7 +73,7 @@ const TechnologiesTools = () => {
           {[...technologies, ...technologies].map((tech, index) => (
             <div 
               key={index}
-              className="flex-shrink-0 w-48 h-32 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl flex flex-col items-center justify-center p-6 transition-all duration-300 hover:border-white/20 hover:bg-white/5 group"
+              className="flex-shrink-0 w-48 h-32 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl flex flex-col items-center justify-center p-6 transition-all duration-300 transform-gpu hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_22px_70px_rgba(0,0,0,0.35)] group"
             >
               <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{tech.icon}</div>
               <h3 className="text-lg font-bold text-white">{tech.name}</h3>

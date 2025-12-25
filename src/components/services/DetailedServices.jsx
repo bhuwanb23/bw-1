@@ -156,7 +156,7 @@ const DetailedServices = () => {
                     key={service.id}
                     type="button"
                     onClick={() => setActiveServiceId(service.id)}
-                    className={`w-full rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
+                    className={`w-full rounded-2xl border px-4 py-3 text-left transition-all duration-300 transform-gpu hover:-translate-y-0.5 hover:shadow-[0_18px_50px_rgba(0,0,0,0.35)] ${
                       active ? 'border-white/25 bg-white/5' : 'border-white/10 hover:border-white/20 hover:bg-white/5'
                     }`}
                   >
@@ -165,8 +165,8 @@ const DetailedServices = () => {
                         {service.icon}
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-white truncate">{service.title}</p>
-                        <p className="text-xs text-white/60 truncate">{service.tagline}</p>
+                        <p className="text-sm font-semibold text-white">{service.title}</p>
+                        <p className="text-xs text-white/60">{service.tagline}</p>
                       </div>
                     </div>
                   </button>
@@ -175,7 +175,7 @@ const DetailedServices = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-2xl p-6 md:p-8">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-2xl p-6 md:p-8 transition-all duration-300 hover:border-white/15 hover:shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
             <div className="flex flex-col md:flex-row md:items-start gap-6">
               <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${activeService.color} flex items-center justify-center text-2xl`}>
                 {activeService.icon}
@@ -185,7 +185,7 @@ const DetailedServices = () => {
                 <p className="mt-2 text-white/75">{activeService.description}</p>
 
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
-                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Best for</p>
                     <ul className="mt-3 space-y-2">
                       {activeService.bestFor.map((item) => (
@@ -197,7 +197,7 @@ const DetailedServices = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Deliverables</p>
                     <ul className="mt-3 space-y-2">
                       {activeService.deliverables.map((item) => (
@@ -209,7 +209,7 @@ const DetailedServices = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Typical timeline</p>
                     <p className="mt-3 text-sm text-white/80">{activeService.timeline}</p>
                     <p className="mt-5 text-[10px] uppercase tracking-[0.25em] text-white/50">Stack (example)</p>

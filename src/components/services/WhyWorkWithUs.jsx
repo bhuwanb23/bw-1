@@ -83,7 +83,7 @@ const WhyWorkWithUs = () => {
           {advantages.map((advantage, index) => (
             <div
               key={index}
-              className={`group relative rounded-3xl overflow-hidden border border-white/10 bg-black/30 backdrop-blur-xl p-6 transition-all duration-500 ${
+              className={`group relative rounded-3xl overflow-hidden border border-white/10 bg-black/30 backdrop-blur-xl p-6 transition-all duration-500 transform-gpu hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_30px_90px_rgba(0,0,0,0.35)] ${
                 visibleAdvantages.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >

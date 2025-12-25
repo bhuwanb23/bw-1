@@ -5,9 +5,9 @@ import DetailedServices from '../components/services/DetailedServices.jsx'
 import ProcessSection from '../components/services/ProcessSection.jsx'
 import WhyWorkWithUs from '../components/services/WhyWorkWithUs.jsx'
 import TechnologiesTools from '../components/services/TechnologiesTools.jsx'
-import TechRadar from '../components/services/TechRadar.jsx'
 import ServicesCTA from '../components/services/ServicesCTA.jsx'
 import SEO from '../components/SEO.jsx'
+import Reveal from '../components/Reveal.jsx'
 import { pageSEO, softwareApplicationSchema } from '../data/seoData.js'
 
 const ServicesPage = () => {
@@ -24,13 +24,27 @@ const ServicesPage = () => {
       <div className="relative z-20">
         <main className="relative w-full px-4 sm:px-8 lg:px-12">
           <ServicesHero />
-          <OutcomesBoard />
-          <DetailedServices />
-          <DeliveryPlaybook />
-          <ProcessSection />
-          <WhyWorkWithUs />
-          <TechnologiesTools />
-          <ServicesCTA />
+          <Reveal delay={0} amount={0.15} margin="-10% 0px">
+            <OutcomesBoard />
+          </Reveal>
+          <Reveal delay={80} amount={0.15} margin="-10% 0px">
+            <DetailedServices />
+          </Reveal>
+          <Reveal delay={120} amount={0.15} margin="-10% 0px">
+            <DeliveryPlaybook />
+          </Reveal>
+          <Reveal delay={160} amount={0.15} margin="-10% 0px">
+            <ProcessSection />
+          </Reveal>
+          <Reveal delay={200} amount={0.15} margin="-10% 0px">
+            <WhyWorkWithUs />
+          </Reveal>
+          <Reveal delay={240} amount={0.15} margin="-10% 0px">
+            <TechnologiesTools />
+          </Reveal>
+          <Reveal delay={280} amount={0.15} margin="-10% 0px">
+            <ServicesCTA />
+          </Reveal>
         </main>
       </div>
     </div>

@@ -84,7 +84,7 @@ const OutcomesBoard = () => {
                     key={t.id}
                     type="button"
                     onClick={() => setActiveId(t.id)}
-                    className={`w-full rounded-2xl border px-4 py-3 text-left transition-all ${
+                    className={`w-full rounded-2xl border px-4 py-3 text-left transition-all duration-300 transform-gpu hover:-translate-y-0.5 hover:shadow-[0_18px_50px_rgba(0,0,0,0.35)] ${
                       activeTab
                         ? 'border-white/25 bg-white/5'
                         : 'border-white/10 bg-black/20 hover:border-white/20 hover:bg-white/5'
@@ -130,7 +130,10 @@ const OutcomesBoard = () => {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {active.outcomes.map((o) => (
-                <div key={o.label} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                <div
+                  key={o.label}
+                  className="rounded-2xl border border-white/10 bg-black/30 p-4 transition-all duration-300 transform-gpu hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+                >
                   <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">{o.label}</p>
                   <p className="mt-2 text-xl font-semibold text-white">{o.value}</p>
                   <p className="mt-1 text-sm text-white/65">{o.note}</p>

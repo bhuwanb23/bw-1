@@ -51,8 +51,9 @@ const ServicesCTA = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`rounded-3xl border border-white/10 bg-black/30 backdrop-blur-2xl p-7 md:p-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+        <div className={`rounded-3xl border border-white/10 bg-black/30 backdrop-blur-2xl p-7 md:p-10 transition-all duration-700 transform-gpu hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_30px_90px_rgba(0,0,0,0.35)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+
             <div>
               <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/60 mb-5">
                 <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
@@ -70,17 +71,18 @@ const ServicesCTA = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 to="/proposal"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:from-blue-600 hover:to-purple-600"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 transform-gpu hover:-translate-y-0.5 hover:from-blue-600 hover:to-purple-600 hover:shadow-[0_18px_55px_rgba(59,130,246,0.25)]"
               >
                 Request a proposal
               </Link>
               <Link
                 to="/proposal"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/30 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/85 transition-all duration-300 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/30 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/85 transition-all duration-300 transform-gpu hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:shadow-[0_18px_55px_rgba(0,0,0,0.35)]"
               >
                 Book a consult
               </Link>
             </div>
+
           </div>
         </div>
       </div>
