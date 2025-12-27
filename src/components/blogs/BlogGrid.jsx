@@ -22,23 +22,28 @@ const BlogGrid = ({ articles = [], view = 'grid', emptyMessage = 'No articles ma
         </div>
       ) : (
         <div className={layout}>
-          {articles.map((article) => (
+          {articles.map((article, index) => (
             <article
               key={article.id}
-              className="group rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-white/30 hover:bg-black/50"
+              className="group rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-6 transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:border-white/30 hover:bg-black/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] animate-card-enter"
+              style={{ animationDelay: `${index * 80}ms` }}
             >
-              <div className="flex items-center justify-between text-xs text-white/60">
-                <span className="inline-flex items-center rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-white/70">
-                  {article.category}
-                </span>
-                <span>{article.readTime}</span>
-              </div>
+              {/* Animated gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 rounded-2xl transition-all duration-500 pointer-events-none"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-between text-xs text-white/60">
+                  <span className="inline-flex items-center rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-white/70 transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                    {article.category}
+                  </span>
+                  <span className="transition-all duration-300 group-hover:text-white/80">{article.readTime}</span>
+                </div>
 
               <div className="mt-4 space-y-3">
-                <h3 className="text-xl font-semibold text-white leading-tight group-hover:text-blue-300 transition-colors">
+                <h3 className="text-xl font-semibold text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-300 group-hover:via-purple-300 group-hover:to-pink-300 transition-all duration-300">
                   {article.title}
                 </h3>
-                <p className="text-white/70 text-sm">{article.excerpt}</p>
+                <p className="text-white/70 text-sm transition-all duration-300 group-hover:text-white/90">{article.excerpt}</p>
 
                 {article.tags?.length ? (
                   <div className="flex flex-wrap gap-2">
@@ -54,17 +59,21 @@ const BlogGrid = ({ articles = [], view = 'grid', emptyMessage = 'No articles ma
                 ) : null}
               </div>
 
-              <div className="mt-6 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-[11px] font-bold text-white flex items-center justify-center">
-                    {article.author.avatar}
+                <div className="mt-6 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="h-9 w-9 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-[11px] font-bold text-white flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                      {article.author.avatar}
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white transition-all duration-300 group-hover:text-white/90">{article.author.name}</p>
+                      <p className="text-xs text-white/50 transition-all duration-300 group-hover:text-white/70">{article.date}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-white">{article.author.name}</p>
-                    <p className="text-xs text-white/50">{article.date}</p>
-                  </div>
+                  <button className="text-sm font-semibold text-blue-400 hover:text-blue-300 transition-all duration-300 group-hover:translate-x-2 flex items-center gap-1">
+                    Read 
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </button>
                 </div>
-                <button className="text-sm font-semibold text-blue-400 hover:text-blue-300">Read →</button>
               </div>
             </article>
           ))}

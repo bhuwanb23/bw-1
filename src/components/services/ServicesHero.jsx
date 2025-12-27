@@ -31,7 +31,7 @@ const ServicesHero = () => {
 
           <h1 className="text-4xl md:text-6xl font-semibold text-white leading-[1.05]">
             Engineering systems that
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-sky-300 bg-clip-text text-transparent"> ship </span>
+            <span className="gradient-text-animated"> ship </span>
             and scale.
           </h1>
 
@@ -48,7 +48,7 @@ const ServicesHero = () => {
             </a>
             <Link
               to="/proposal"
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/30 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/85 transition-all duration-300 hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-pink-600 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:from-purple-600 hover:via-pink-600 hover:to-pink-700 hover:shadow-[0_8px_25px_rgba(236,72,153,0.3)]"
             >
               Request a proposal
             </Link>

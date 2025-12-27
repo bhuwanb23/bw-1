@@ -39,7 +39,7 @@ const ProposalHero = () => {
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="gradient-text-animated">
               Request a Proposal
             </span>
           </h1>
@@ -51,12 +51,12 @@ const ProposalHero = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
             <button 
               onClick={() => document.getElementById('proposal-form').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/30"
+              className="btn-primary-spline btn-primary-spline-lg btn-primary-spline-rounded"
             >
               Get Started
             </button>
             
-            <button className="px-8 py-4 rounded-full border border-white/20 bg-black/30 text-white font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+            <button className="btn-secondary-spline btn-secondary-spline-lg btn-secondary-spline-rounded">
               View Sample Proposals
             </button>
           </div>

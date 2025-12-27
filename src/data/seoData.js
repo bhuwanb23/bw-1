@@ -59,7 +59,8 @@ export const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
-    email: 'contact@Innovexex.com', // Update with actual email
+    email: 'innovexex@gmail.com',
+    telephone: '+9106383617873',
   },
 }
 

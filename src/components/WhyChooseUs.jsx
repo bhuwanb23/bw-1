@@ -94,7 +94,7 @@ const WhyChooseUs = () => {
           
           <h2 className={`${SECTION_HEADING} mb-6`}>
             Why choose{' '}
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="gradient-text-animated">
               Innovexex?
             </span>
           </h2>
@@ -114,53 +114,66 @@ const WhyChooseUs = () => {
               className="flex-shrink-0"
             >
               <div 
-                className={`group relative h-44 rounded-xl overflow-hidden border border-white/10 bg-transparent backdrop-blur-none p-5 transition-all duration-500 flex flex-col ${
-                  hoveredIndex !== null && hoveredIndex !== index ? 'blur-sm opacity-70' : ''
+                className={`group relative h-44 rounded-xl overflow-hidden border transition-all duration-500 flex flex-col cursor-pointer ${
+                  hoveredIndex === index 
+                    ? 'border-white/30 bg-gradient-to-br from-white/10 via-black/40 to-black/30 backdrop-blur-xl scale-105 shadow-2xl z-10' 
+                    : 'border-white/10 bg-black/20 backdrop-blur-sm'
+                } ${
+                  hoveredIndex !== null && hoveredIndex !== index ? 'blur-sm opacity-50 scale-95' : ''
                 }`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                style={{
-                  transform: hoveredIndex === index ? 'translateY(-5px)' : 'none',
-                  transition: 'transform 0.3s ease, filter 0.3s ease'
-                }}
               >
+                {/* Glow effect that intensifies on hover */}
+                <div className={`absolute -inset-1 bg-gradient-to-br ${reason.color} opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-40 rounded-xl`}></div>
+                
                 {/* Enhanced gradient background that shows prominently on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${reason.color} opacity-0 transition-all duration-500 group-hover:opacity-20 rounded-xl`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${reason.color} opacity-0 transition-all duration-500 group-hover:opacity-25 rounded-xl`}></div>
                 
                 {/* Additional gradient overlay for more depth */}
-                <div className={`absolute inset-0 bg-gradient-to-tr ${reason.color} opacity-0 transition-all duration-700 group-hover:opacity-10 rounded-xl`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-tr ${reason.color} opacity-0 transition-all duration-700 group-hover:opacity-15 rounded-xl`}></div>
                 
-                {/* White circular background shape on hover */}
-                <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-white opacity-0 transition-opacity duration-500 group-hover:opacity-10`}></div>
+                {/* Animated radial gradient on hover */}
+                <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-gradient-to-r ${reason.color} opacity-0 transition-all duration-700 group-hover:opacity-20 group-hover:scale-150 blur-2xl`}></div>
                 
-                <div className="relative flex flex-col h-full">
+                {/* Shimmer effect on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-hover:animate-shimmer`} style={{
+                  backgroundSize: '200% 100%'
+                }}></div>
+                
+                {/* Inner glow border */}
+                <div className={`absolute inset-[1px] rounded-xl border border-white/0 transition-all duration-500 group-hover:border-white/20`}></div>
+                
+                <div className="relative flex flex-col h-full z-10">
                   {/* Icon and Number Badge */}
                   <div className="flex justify-between items-start mb-3">
-                    <div className={`text-2xl`}>{reason.icon}</div>
-                    <div className={`inline-flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br ${reason.color} text-white font-bold text-xs`}>
+                    <div className={`text-2xl transition-all duration-500 group-hover:scale-125 group-hover:rotate-12`}>{reason.icon}</div>
+                    <div className={`inline-flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br ${reason.color} text-white font-bold text-xs transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-current`}>
                       {String(index + 1).padStart(2, '0')}
                     </div>
                   </div>
                   
                   <div className="mt-auto">
-                    <h3 className="text-base font-bold text-white mb-1">{reason.title}</h3>
-                    <p className="text-white/70 text-xs mb-3">{reason.description}</p>
+                    <h3 className="text-base font-bold text-white mb-1 transition-all duration-500 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:via-white group-hover:to-white/80">{reason.title}</h3>
+                    <p className="text-white/70 text-xs mb-3 transition-all duration-500 group-hover:text-white/90">{reason.description}</p>
                     
                     {/* Enhanced Progress Bar */}
                     <div className="mt-auto">
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-[10px] text-white/60">Impact</span>
-                        <span className={`text-xs font-bold bg-gradient-to-r ${reason.color} bg-clip-text text-transparent`}>{reason.impact}%</span>
+                        <span className="text-[10px] text-white/60 transition-all duration-500 group-hover:text-white/80">Impact</span>
+                        <span className={`text-xs font-bold bg-gradient-to-r ${reason.color} bg-clip-text text-transparent transition-all duration-500 group-hover:scale-110`}>{reason.impact}%</span>
                       </div>
-                      <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+                      <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden transition-all duration-500 group-hover:bg-white/20">
                         <div 
-                          className={`bg-gradient-to-r ${reason.color} h-1.5 rounded-full transition-all duration-1000 ease-out relative`}
+                          className={`bg-gradient-to-r ${reason.color} h-1.5 rounded-full transition-all duration-1000 ease-out relative group-hover:h-2`}
                           style={{ 
                             width: `${reason.impact}%`,
                             transitionDelay: `${index * 200}ms`
                           }}
                         >
-                          <div className="absolute inset-0 bg-white/30 rounded-full animate-pulse"></div>
+                          <div className="absolute inset-0 bg-white/30 rounded-full animate-pulse group-hover:bg-white/50"></div>
+                          {/* Glow effect on progress bar */}
+                          <div className={`absolute inset-0 bg-gradient-to-r ${reason.color} opacity-0 group-hover:opacity-50 blur-sm transition-opacity duration-500`}></div>
                         </div>
                       </div>
                     </div>

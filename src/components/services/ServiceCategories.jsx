@@ -210,11 +210,12 @@ const ServiceCategories = () => {
           {serviceCategories.map((service, index) => (
             <div
               key={service.id}
-              className={`group relative rounded-3xl overflow-hidden border transition-all duration-700 cursor-pointer transform-gpu ${
+              className={`group relative rounded-3xl overflow-hidden border transition-all duration-700 cursor-pointer transform-gpu animate-card-enter ${
                 activeCard === index
-                  ? 'border-white/40 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-3xl scale-105 shadow-2xl z-10'
-                  : 'border-white/10 bg-black/30 hover:border-white/20'
+                  ? 'border-white/40 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-3xl scale-110 shadow-2xl z-10 -translate-y-2'
+                  : 'border-white/10 bg-black/30 hover:border-white/20 hover:scale-105 hover:-translate-y-1'
               } ${service.bgColor}`}
+              style={{ animationDelay: `${index * 100}ms` }}
               onMouseMove={handleMouseMove}
               onMouseEnter={() => setActiveCard(index)}
               onMouseLeave={() => setActiveCard(null)}

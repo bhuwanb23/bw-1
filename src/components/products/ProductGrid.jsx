@@ -143,12 +143,16 @@ const ProductGrid = () => {
           {products.map((product, index) => (
             <Reveal key={product.id} delay={index * 60} amount={0.15} margin="-10% 0px">
               <div
-                className="group relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/6 via-black/30 to-black/20 backdrop-blur-xl cursor-pointer transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_26px_80px_rgba(0,0,0,0.35)] hover:bg-gradient-to-br hover:from-white/12 hover:via-black/25 hover:to-black/10"
+                className="group relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/6 via-black/30 to-black/20 backdrop-blur-xl cursor-pointer transition-all duration-500 transform-gpu hover:-translate-y-2 hover:scale-[1.02] hover:border-white/25 hover:shadow-[0_26px_80px_rgba(0,0,0,0.35)] hover:bg-gradient-to-br hover:from-white/12 hover:via-black/25 hover:to-black/10 animate-card-enter"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Glow effect */}
+                {/* Glow effect with animation */}
                 <div
-                  className={`absolute -inset-20 bg-gradient-to-br ${product.color} opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-[0.18]`}
+                  className={`absolute -inset-20 bg-gradient-to-br ${product.color} opacity-0 blur-3xl transition-all duration-500 group-hover:opacity-[0.25] group-hover:scale-110`}
                 />
+                
+                {/* Pulsing ring effect on hover */}
+                <div className={`absolute inset-0 rounded-3xl border-2 border-transparent transition-all duration-500 group-hover:border-white/20 group-hover:scale-105`}></div>
 
                 {/* Visible inner panel for better contrast */}
                 <div className="absolute inset-0 bg-gradient-to-b from-white/8 via-transparent to-black/20 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
@@ -156,9 +160,11 @@ const ProductGrid = () => {
                 <div className="p-5 h-full flex flex-col relative z-10">
                   {/* Product header with icon and rating */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`relative w-12 h-12 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center text-xl transform transition-all duration-300 group-hover:scale-110`}>
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-transparent"></div>
-                      <span className="relative z-10">{product.image}</span>
+                    <div className={`relative w-12 h-12 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center text-xl transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:shadow-lg`}>
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-transparent animate-pulse-slow"></div>
+                      <span className="relative z-10 transition-transform duration-500 group-hover:scale-110">{product.image}</span>
+                      {/* Rotating glow ring */}
+                      <div className="absolute inset-0 rounded-2xl border-2 border-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-spin-slow transition-opacity duration-500"></div>
                     </div>
                     
                     <div className="flex items-center gap-1 text-yellow-400">
@@ -169,8 +175,8 @@ const ProductGrid = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-white mb-1.5">{product.title}</h3>
-                  <p className="text-sm text-white/70 mb-4 line-clamp-2">{product.description}</p>
+                  <h3 className="text-lg font-semibold text-white mb-1.5 transition-all duration-300 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:via-white/90 group-hover:to-white/70">{product.title}</h3>
+                  <p className="text-sm text-white/70 mb-4 line-clamp-2 transition-all duration-300 group-hover:text-white/90">{product.description}</p>
 
                   {/* Interactive video preview */}
                   <div className="relative mb-4 rounded-2xl overflow-hidden bg-black/30 border border-white/10 aspect-[16/9]">

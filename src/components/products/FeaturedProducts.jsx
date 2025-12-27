@@ -106,7 +106,7 @@ const FeaturedProducts = () => {
 
         {/* Desktop: Carousel */}
         <div 
-          className="hidden lg:block relative h-96 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl"
+          className="hidden lg:block relative h-96 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-black/20 to-black/10 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)]"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -155,7 +155,7 @@ const FeaturedProducts = () => {
                 </div>
                 
                 <div className="flex justify-center">
-                  <div className={`w-64 h-64 rounded-3xl bg-gradient-to-br ${product.color} flex items-center justify-center text-8xl shadow-2xl`}>
+                  <div className={`w-64 h-64 rounded-3xl bg-gradient-to-br ${product.color} flex items-center justify-center text-8xl shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.5)]`}>
                     {product.image}
                   </div>
                 </div>

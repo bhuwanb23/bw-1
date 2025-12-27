@@ -16,7 +16,7 @@ const Hero = () => {
           <div className="space-y-5 sm:space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] text-white tracking-tight">
               Engineering the{' '}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="gradient-text-animated">
                 Infinite.
               </span>
             </h1>
@@ -29,14 +29,13 @@ const Hero = () => {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-4 sm:gap-4 md:pt-6">
             <a
               href="#contact"
-              className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] sm:px-8 sm:py-4 sm:text-base"
+              className="btn-primary-spline sm:btn-primary-spline-lg"
             >
-              <span className="relative z-10">Start Your Project</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10 sm:px-8 sm:py-4 sm:text-base"
+              className="btn-ghost-spline sm:btn-ghost-spline-lg"
             >
               Explore Our Work
             </a>

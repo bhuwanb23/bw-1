@@ -23,8 +23,7 @@ const Header = () => {
 
   return (
     <div className={`fixed inset-x-0 top-5 z-40 transition-all duration-500 ${isScrolled ? 'top-2' : 'top-5'}`}>
-      <div className={`pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-xl transition-all duration-500 ${isScrolled ? 'bg-black/60 backdrop-blur-2xl' : 'bg-black/80 backdrop-blur-xl'}`} />
-      <header className={`header-fade relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 transition-all duration-500 ${isScrolled ? 'py-2 backdrop-blur-2xl' : 'py-3'} sm:px-6 md:px-8`}>
+      <header className={`header-fade relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 transition-all duration-500 sm:px-6 md:px-8`}>
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-white/90 transition-all duration-300 hover:text-white"
@@ -73,7 +72,7 @@ const Header = () => {
 
         <Link
           to="/proposal"
-          className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_0_20px_rgba(56,189,248,0.7)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(56,189,248,0.9)] sm:text-[11px] sm:tracking-[0.22em] sm:px-5 md:inline-flex group"
+          className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-pink-600 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_0_20px_rgba(168,85,247,0.6)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(236,72,153,0.8)] sm:text-[11px] sm:tracking-[0.22em] sm:px-5 md:inline-flex group"
         >
           <span className="transition-transform duration-300 group-hover:translate-x-1">Request a Proposal</span>
           <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +117,7 @@ const Header = () => {
           {/* Contact Button */}
           <Link
             to="/proposal"
-            className="mt-12 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-6 py-3 text-base font-semibold uppercase tracking-widest text-white shadow-[0_0_30px_rgba(56,189,248,0.7)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(56,189,248,0.9)] group"
+            className="mt-12 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-pink-600 px-5 py-2.5 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.8)] group"
             onClick={() => setIsMenuOpen(false)}
           >
             <span className="transition-transform duration-300 group-hover:translate-x-1">Request a Proposal</span>
@@ -128,8 +127,6 @@ const Header = () => {
           </Link>
         </div>
       </div>
-
-      <div className={`mx-auto h-px w-full max-w-7xl bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-500 ${isScrolled ? 'opacity-50' : 'opacity-100'}`} />
     </div>
   )
 }

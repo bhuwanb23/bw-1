@@ -105,9 +105,10 @@ const ServicesOverview = () => {
               >
                 {/* Enhanced Card UI with Hover Flip Animation */}
                 <div
-                  className={`group relative w-72 h-96 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${
-                    hoveredCard !== null && hoveredCard !== index ? 'blur-sm opacity-70' : ''
-                  }`}
+                  className={`group relative w-72 h-96 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 animate-card-enter ${
+                    hoveredCard !== null && hoveredCard !== index ? 'blur-sm opacity-70 scale-95' : ''
+                  } ${hoveredCard === index ? 'scale-105 z-10' : ''}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >

@@ -96,8 +96,8 @@ const Testimonials = () => {
                   key={`row1-${index}`} 
                   className="mx-3 inline-block w-96 flex-shrink-0"
                 >
-                  <article className="flex items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left shadow-[0_0_30px_rgba(15,23,42,0.3)] transition duration-500 hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.08]">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold mr-3 flex-shrink-0">
+                  <article className="flex items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left shadow-[0_0_30px_rgba(15,23,42,0.3)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-white/30 hover:bg-white/[0.08] hover:shadow-[0_20px_50px_rgba(15,23,42,0.5)] group">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold mr-3 flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg">
                       {testimonial.name
                         .split(' ')
                         .map((n) => n[0])
@@ -128,8 +128,8 @@ const Testimonials = () => {
                   key={`row2-${index}`} 
                   className="mx-3 inline-block w-96 flex-shrink-0"
                 >
-                  <article className="flex items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left shadow-[0_0_30px_rgba(15,23,42,0.3)] transition duration-500 hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.08]">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold mr-3 flex-shrink-0">
+                  <article className="flex items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left shadow-[0_0_30px_rgba(15,23,42,0.3)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-white/30 hover:bg-white/[0.08] hover:shadow-[0_20px_50px_rgba(15,23,42,0.5)] group">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold mr-3 flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg">
                       {testimonial.name
                         .split(' ')
                         .map((n) => n[0])

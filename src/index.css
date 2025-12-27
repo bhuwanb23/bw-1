@@ -3,9 +3,9 @@
 :root {
   --font-sans: "DM Sans", "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-heading: "Space Grotesk", "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --color-Innovexex-primary: 88 101 242;
-  --color-Innovexex-secondary: 16 230 255;
-  --color-Innovexex-accent: 196 181 253;
+  --color-Innovexex-primary: 59 130 246;
+  --color-Innovexex-secondary: 168 85 247;
+  --color-Innovexex-accent: 236 72 153;
   color-scheme: dark;
 }
 
@@ -13,7 +13,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   background-color: #000;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: rgba(56, 189, 248, 0.3);
+  background: rgba(59, 130, 246, 0.4);
   color: #fff;
 }
 
@@ -62,13 +62,24 @@ h1, h2, h3, h4, h5, h6 {
 .neon-text {
   background-image: linear-gradient(
     120deg,
-    rgb(var(--color-Innovexex-secondary)) 0%,
-    rgb(var(--color-Innovexex-primary)) 45%,
-    rgb(var(--color-Innovexex-accent)) 100%
+    rgba(59, 130, 246, 0.9) 0%,
+    rgba(168, 85, 247, 0.9) 45%,
+    rgba(236, 72, 153, 0.9) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  background-size: 200% 200%;
+  animation: textGradientShift 8s ease-in-out infinite;
+}
+
+@keyframes textGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .heading-dash::before {
@@ -78,7 +89,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 2.5rem;
   height: 1px;
   margin-right: 0.75rem;
-  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.8), rgba(129, 140, 248, 0.9), rgba(244, 114, 182, 0.8));
+  background-image: linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(168, 85, 247, 0.9), rgba(236, 72, 153, 0.8));
+  animation: dashGradientShift 6s ease-in-out infinite;
+}
+
+@keyframes dashGradientShift {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .reveal-up {
@@ -303,4 +324,385 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(226, 232, 240, 0.85);
   backdrop-filter: blur(6px);
   box-shadow: 0 0 18px rgba(94, 234, 212, 0.25);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.25;
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.animate-gradient-shift-reverse {
+  animation: gradientShift 10s ease-in-out infinite reverse;
+}
+
+@keyframes gradientMesh {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.animate-gradient-mesh {
+  animation: gradientMesh 12s ease-in-out infinite;
+}
+
+@keyframes colorSweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-color-sweep {
+  animation: colorSweep 15s linear infinite;
+}
+
+/* Card Entry Animations */
+@keyframes cardEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-enter {
+  animation: cardEnter 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Slow Pulse Animation */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Slow Spin Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Animated gradient text that matches background animation */
+.gradient-text-animated {
+  background: linear-gradient(
+    120deg,
+    rgba(59, 130, 246, 1) 0%,
+    rgba(168, 85, 247, 1) 50%,
+    rgba(236, 72, 153, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: textGradientShift 8s ease-in-out infinite;
+}
+
+/* Subtle animated text glow */
+.text-glow-animated {
+  text-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(168, 85, 247, 0.2),
+    0 0 30px rgba(236, 72, 153, 0.1);
+  animation: textGlow 4s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.3),
+      0 0 20px rgba(168, 85, 247, 0.2),
+      0 0 30px rgba(236, 72, 153, 0.1);
+  }
+  50% {
+    text-shadow: 
+      0 0 15px rgba(59, 130, 246, 0.5),
+      0 0 25px rgba(168, 85, 247, 0.4),
+      0 0 35px rgba(236, 72, 153, 0.3);
+  }
+}
+
+/* Button Themes Matching Spline Background Animation */
+
+/* Primary Button - Animated Gradient */
+.btn-primary-spline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    120deg,
+    rgba(59, 130, 246, 1) 0%,
+    rgba(168, 85, 247, 1) 50%,
+    rgba(236, 72, 153, 1) 100%
+  );
+  background-size: 200% 200%;
+  animation: buttonGradientShift 8s ease-in-out infinite;
+  box-shadow: 
+    0 4px 15px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.btn-primary-spline:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(59, 130, 246, 0.5),
+    0 0 40px rgba(168, 85, 247, 0.4),
+    0 0 60px rgba(236, 72, 153, 0.3);
+  animation-duration: 4s;
+}
+
+.btn-primary-spline:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary-spline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(236, 72, 153, 1) 0%,
+    rgba(168, 85, 247, 1) 50%,
+    rgba(59, 130, 246, 1) 100%
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: buttonGradientShift 8s ease-in-out infinite reverse;
+}
+
+.btn-primary-spline:hover::before {
+  opacity: 0.3;
+}
+
+.btn-primary-spline > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Secondary Button - Outline with Gradient Border */
+.btn-secondary-spline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  isolation: isolate;
+}
+
+.btn-secondary-spline::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    120deg,
+    rgba(59, 130, 246, 0.8) 0%,
+    rgba(168, 85, 247, 0.8) 50%,
+    rgba(236, 72, 153, 0.8) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: buttonGradientShift 8s ease-in-out infinite;
+  z-index: -1;
+}
+
+.btn-secondary-spline:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 20px rgba(59, 130, 246, 0.3),
+    0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+.btn-secondary-spline > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ghost Button - Subtle with Hover Glow */
+.btn-ghost-spline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.btn-ghost-spline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(168, 85, 247, 0.1) 50%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: buttonGradientShift 8s ease-in-out infinite;
+}
+
+.btn-ghost-spline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(59, 130, 246, 0.2),
+    0 0 25px rgba(168, 85, 247, 0.15);
+}
+
+.btn-ghost-spline:hover::before {
+  opacity: 1;
+}
+
+.btn-ghost-spline > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Large Button Variant */
+.btn-primary-spline-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 0.75rem;
+}
+
+.btn-secondary-spline-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 0.75rem;
+}
+
+.btn-ghost-spline-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 0.75rem;
+}
+
+/* Small Button Variant */
+.btn-primary-spline-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+}
+
+.btn-secondary-spline-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+}
+
+.btn-ghost-spline-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+}
+
+/* Rounded Full Button Variant */
+.btn-primary-spline-rounded {
+  border-radius: 9999px;
+}
+
+.btn-secondary-spline-rounded {
+  border-radius: 9999px;
+}
+
+.btn-ghost-spline-rounded {
+  border-radius: 9999px;
+}
+
+@keyframes buttonGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }

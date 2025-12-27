@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Reveal from './Reveal.jsx'
 import { SECTION_HEADING } from '../constants/typography.js'
 
@@ -31,6 +31,78 @@ const products = [
     year: '2023'
   }
 ]
+
+// Enhanced animated counter component that handles different formats
+const AnimatedMetricCounter = ({ value, duration = 2000, delay = 0 }) => {
+  // Extract suffix for initial display
+  let initialSuffix = ''
+  if (typeof value === 'string') {
+    const match = value.match(/(\d+\.?\d*)([KMB%+]*)/)
+    if (match) {
+      initialSuffix = match[2] || ''
+    }
+  }
+  
+  const [displayValue, setDisplayValue] = useState(`0${initialSuffix}`)
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Parse the value to extract number and suffix
+      let numericValue = 0
+      let suffix = ''
+      let isDecimal = false
+      let decimalPlaces = 0
+      
+      if (typeof value === 'string') {
+        // Handle formats like "100K+", "99.5%", "15+"
+        const match = value.match(/(\d+\.?\d*)([KMB%+]*)/)
+        if (match) {
+          numericValue = parseFloat(match[1])
+          suffix = match[2] || ''
+          isDecimal = value.includes('.')
+          
+          // Extract decimal places from original value
+          if (isDecimal) {
+            const decimalPart = value.split('.')[1]
+            decimalPlaces = decimalPart ? decimalPart.replace(/[^0-9]/g, '').length : 1
+          }
+        }
+      } else {
+        numericValue = value
+      }
+      
+      let start = 0
+      const increment = numericValue / (duration / 16)
+      
+      const counter = setInterval(() => {
+        start += increment
+        if (start >= numericValue) {
+          // Final value - show exact format
+          if (isDecimal) {
+            setDisplayValue(numericValue.toFixed(decimalPlaces) + suffix)
+          } else {
+            setDisplayValue(Math.floor(numericValue) + suffix)
+          }
+          clearInterval(counter)
+        } else {
+          // Animated value
+          if (isDecimal) {
+            setDisplayValue(start.toFixed(decimalPlaces) + suffix)
+          } else {
+            setDisplayValue(Math.floor(start) + suffix)
+          }
+        }
+      }, 16)
+      
+      return () => clearInterval(counter)
+    }, delay)
+    
+    return () => clearTimeout(timer)
+  }, [value, duration, delay])
+  
+  return <span>{displayValue}</span>
+}
+
 
 const ProductsShowcase = () => {
   const [hoveredCard, setHoveredCard] = useState(null)
@@ -74,7 +146,8 @@ const ProductsShowcase = () => {
               className="flex-shrink-0"
             >
               <div 
-                className="group relative w-full h-64 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500"
+                className="group relative w-full h-64 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-card-enter"
+                style={{ animationDelay: `${index * 150}ms` }}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -182,25 +255,25 @@ const ProductsShowcase = () => {
               <div className="grid gap-8 md:grid-cols-4 text-center">
                 <div className="group cursor-pointer">
                   <div className="text-4xl font-bold text-white mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-purple-400">
-                    5
+                    <AnimatedMetricCounter value="5" duration={1500} delay={100} />
                   </div>
                   <div className="text-white/60 text-sm">Products Built</div>
                 </div>
                 <div className="group cursor-pointer">
                   <div className="text-4xl font-bold text-white mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-400">
-                    100K+
+                    <AnimatedMetricCounter value="100K+" duration={2000} delay={300} />
                   </div>
                   <div className="text-white/60 text-sm">Users Impacted</div>
                 </div>
                 <div className="group cursor-pointer">
                   <div className="text-4xl font-bold text-white mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-emerald-400">
-                    99.5%
+                    <AnimatedMetricCounter value="99.5%" duration={1800} delay={500} />
                   </div>
                   <div className="text-white/60 text-sm">Uptime Average</div>
                 </div>
                 <div className="group cursor-pointer">
                   <div className="text-4xl font-bold text-white mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-pink-400">
-                    15+
+                    <AnimatedMetricCounter value="15+" duration={1200} delay={700} />
                   </div>
                   <div className="text-white/60 text-sm">Technologies Used</div>
                 </div>

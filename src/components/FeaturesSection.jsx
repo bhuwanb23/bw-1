@@ -121,7 +121,8 @@ const FeaturesSection = () => {
               className="group relative"
             >
               <div 
-                className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-7 md:p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/30 hover:bg-black/70 hover:scale-105 hover:-translate-y-1 ${hoveredIndex === index ? feature.glowColor : ''}`}
+                className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-7 md:p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/30 hover:bg-black/70 hover:scale-110 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)] animate-card-enter ${hoveredIndex === index ? feature.glowColor : ''}`}
+                style={{ animationDelay: `${index * 150}ms` }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >

@@ -6,7 +6,7 @@ const contactInfo = [
     title: 'Email Us',
     description: 'For project inquiries and proposals',
     icon: '📧',
-    content: 'proposals@Innovexex.com',
+    content: 'innovexex@gmail.com',
     color: 'from-blue-500 to-cyan-500'
   },
   {
@@ -14,7 +14,7 @@ const contactInfo = [
     title: 'Call / WhatsApp',
     description: 'For immediate assistance',
     icon: '📱',
-    content: '+1 (555) 123-4567',
+    content: '+9106383617873',
     color: 'from-green-500 to-emerald-500'
   },
   {

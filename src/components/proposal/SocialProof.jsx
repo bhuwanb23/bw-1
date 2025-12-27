@@ -37,8 +37,6 @@ const trustBadges = [
   { id: 4, name: '100% Satisfaction', icon: '💯' }
 ]
 
-const clientLogos = ['Client A', 'Client B', 'Client C', 'Client D', 'Client E', 'Client F']
-
 const SocialProof = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
 
@@ -120,21 +118,6 @@ const SocialProof = () => {
               >
                 <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">{badge.icon}</div>
                 <div className="font-bold text-white text-sm sm:text-base text-center">{badge.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Client Logos */}
-        <div className="text-center">
-          <p className="text-white/70 mb-8">Trusted by startups and enterprises worldwide</p>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-8">
-            {clientLogos.map((logo, index) => (
-              <div 
-                key={index} 
-                className="flex items-center justify-center p-4 bg-black/20 rounded-xl border border-white/10 opacity-70 hover:opacity-100 transition-opacity duration-300"
-              >
-                <span className="text-white/80 font-medium">{logo}</span>
               </div>
             ))}
           </div>

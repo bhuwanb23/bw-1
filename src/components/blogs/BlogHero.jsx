@@ -58,17 +58,17 @@ const BlogHero = ({
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-white tracking-tight">
               {title.split('&')[0]}&nbsp;
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="gradient-text-animated">
                 {title.split('&')[1] || ''}
               </span>
             </h1>
             <p className="max-w-3xl mx-auto text-lg sm:text-xl text-white/70 leading-relaxed font-light">{subtitle}</p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow-[0_10px_40px_rgba(59,130,246,0.35)] transition-transform duration-300 hover:scale-105">
+              <button className="btn-primary-spline btn-primary-spline-rounded">
                 Subscribe
               </button>
-              <button className="px-8 py-3 rounded-full border border-white/20 bg-white/5 text-white font-semibold transition-colors duration-300 hover:bg-white/10">
+              <button className="btn-ghost-spline btn-ghost-spline-rounded">
                 Submit story
               </button>
             </div>
